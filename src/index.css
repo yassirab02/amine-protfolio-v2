@@ -1,0 +1,39 @@
+@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilitie
+
+body {
+  margin: 0;
+  padding: 0;
+}
+
+/* Shiny border animation */
+.shiny-border {
+  position: absolute;
+  width: 200%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    transparent,
+    rgba(124, 58, 237, 0.1),
+    rgba(124, 58, 237, 0.3),
+    rgba(255, 255, 255, 0.5),
+    rgba(124, 58, 237, 0.3),
+    rgba(124, 58, 237, 0.1),
+    transparent,
+    transparent
+  );
+  animation: shine 4s linear infinite;
+}
+
+@keyframes shine {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0%);
+  }
+}
+
