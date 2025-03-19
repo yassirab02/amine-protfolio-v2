@@ -7,7 +7,6 @@ const navLinks = [
     { name: "Home", href: "/" },
     { name: "About", href: "/about" },
     { name: "Projects", href: "/projects" },
-    { name: "Skills", href: "/skills" },
     { name: "Services", href: "/services" },
     { name: "Contact", href: "/contact" },
   ]
@@ -64,7 +63,7 @@ export default function Navbar() {
 
         {/* Auth Buttons */}
         <div className="hidden items-center space-x-5 md:flex bg-gray-500/55 backdrop-blur-md">
-          <button className="rounded-md bg-gradient-to-r from-purple-600 to-purple-500 px-5 py-2 text-sm font-medium text-white shadow-[0_4px_10px_rgba(124,58,237,0.3)] transition-all duration-200 hover:shadow-[0_6px_15px_rgba(124,58,237,0.4)]" title="Sign up">
+          <button className="rounded-md bg-gradient-to-r from-purple-600 to-purple-500 px-5 py-2 text-sm font-medium text-white hover:cursor-pointer shadow-[0_4px_10px_rgba(124,58,237,0.3)] transition-all duration-200 hover:shadow-[0_6px_15px_rgba(124,58,237,0.4)]">
           Hire Me
           </button>
         </div>
