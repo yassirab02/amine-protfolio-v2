@@ -170,9 +170,9 @@ export default function ProductDesignerHero() {
 
             <div className="flex flex-wrap gap-16 mt-12">
               {[
-                { number: "+12", label: "Years Experience" },
+                { number: "+5", label: "Years Experience" },
                 { number: "+46", label: "Projects Completed" },
-                { number: "+20", label: "Happy Clients" },
+                { number: "+30", label: "Happy Clients" },
               ].map((stat, index) => (
                 <div
                   key={stat.label}
@@ -203,7 +203,7 @@ export default function ProductDesignerHero() {
 
             <SkillCard
               title="Adobe Premiere Pro, After Effects, Lightroom, Photoshop"
-              bgClass="from-lime-400 to-lime-300"
+              bgClass="from-gray-50 to-gray-100"
               textColor="text-black"
               borderColor="border-black/30"
               delay={1300}

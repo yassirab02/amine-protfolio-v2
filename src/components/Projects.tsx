@@ -181,7 +181,7 @@ export default function Projects() {
         >
           <div className="flex items-center gap-3 text-[#ff5722] mb-3">
             <div className="h-[1px] w-6 bg-[#ff5722] animate-width-expand"></div>
-            <span className="uppercase text-sm font-medium tracking-wider animate-text-fade-in">Portfolio</span>
+            <span className="uppercase text-sm font-medium tracking-wider animate-text-fade-in">PROJECTS</span>
             <div className="h-[1px] w-6 bg-[#ff5722] animate-width-expand"></div>
           </div>
 
