@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useEffect } from "react"
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"
 import { Filter, ArrowUpRight, ExternalLink, Star, Play } from "lucide-react"
 import { useIntersectionObserver } from "../hooks/use-intersection-observer"
 
@@ -136,7 +136,7 @@ export default function Projects() {
     }, 500)
 
     return () => clearTimeout(timer)
-  }, [])
+  }, [filteredProjects])
 
   // Generate random particles
   const particles = Array.from({ length: 20 }, (_, i) => ({
@@ -251,9 +251,9 @@ export default function Projects() {
                 <div className="relative overflow-hidden">
                   <div className="aspect-[4/3] relative">
                     <img
-                      src={project.imageUrl || "/placeholder.svg"}
+                      src={project.imageUrl || "/placeholder.svg?height=400&width=600"}
                       alt={project.title}
-                      className="object-fill transition-transform duration-700 ease-out group-hover:scale-110"
+                      className="object-cover w-full h-full transition-transform duration-700 ease-out group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#0a0b14] via-transparent to-transparent opacity-70"></div>
                     <div className="absolute inset-0 bg-[#0a0b14]/20 group-hover:bg-[#0a0b14]/10 transition-all duration-500"></div>
