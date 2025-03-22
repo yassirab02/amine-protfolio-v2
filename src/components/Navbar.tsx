@@ -152,6 +152,7 @@
             </div>
           </div>
 
+
           {/* Overlay for mobile menu */}
           {mobileMenuOpen && (
             <div className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm" onClick={() => setMobileMenuOpen(false)} />

@@ -161,7 +161,7 @@ export default function ProductDesignerHero() {
           }`}
         >
           <div>
-            <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter">
+            <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter">
               <span className="text-white inline-block transform transition-transform duration-700 delay-700 hover:scale-[1.02] origin-left relative">
                 VIDEOGRAPHER
                 <div className="absolute -bottom-2 left-0 w-2/5 h-1.5 bg-gradient-to-r from-orange-500 to-transparent"></div>
@@ -171,12 +171,12 @@ export default function ProductDesignerHero() {
                 PHOTOGRAPHER
               </span>
             </h1>
-            <p className="text-gray-400 mt-10 max-w-xl text-lg leading-relaxed">
+            <p className="text-gray-400 mt-6 md:mt-10 max-w-xl text-base md:text-lg leading-relaxed">
               Passionate about creating intuitive and engaging visual experiences. Specializing in transforming moments
               into beautifully crafted memories that last forever.
             </p>
 
-            <div className="flex flex-wrap gap-16 mt-14">
+            <div className="flex flex-wrap gap-8 md:gap-16 mt-10 md:mt-14">
               {[
                 { number: "+5", label: "Years Experience" },
                 { number: "+46", label: "Projects Completed" },
@@ -187,7 +187,7 @@ export default function ProductDesignerHero() {
                   className="flex flex-col group relative"
                   style={{ transitionDelay: `${index * 100 + 1000}ms` }}
                 >
-                  <span className="text-5xl font-bold bg-gradient-to-r from-white via-orange-100 to-white bg-clip-text text-transparent group-hover:from-orange-400 group-hover:via-white group-hover:to-orange-100 transition-all duration-500">
+                  <span className="text-4xl md:text-4xl lg:text-5xl font-bold bg-gradient-to-r from-white via-orange-100 to-white bg-clip-text text-transparent group-hover:from-orange-400 group-hover:via-white group-hover:to-orange-100 transition-all duration-500">
                     {stat.number}
                   </span>
                   <span className="text-xs text-gray-500 uppercase tracking-wider mt-2 group-hover:text-gray-300 transition-colors duration-500">
@@ -199,7 +199,7 @@ export default function ProductDesignerHero() {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12 md:mt-16">
             <SkillCard
               title="Cinematography & Video Editing"
               bgClass="from-orange-600 via-orange-500 to-orange-600"
@@ -249,7 +249,7 @@ function SkillCard({
 
   return (
     <div
-      className={`bg-gradient-to-br ${bgClass} rounded-xl p-7 relative overflow-hidden shadow-[0_15px_35px_rgba(0,0,0,0.3)] transform transition-all duration-700 hover:scale-[1.03] hover:shadow-[0_20px_50px_rgba(0,0,0,0.4)] cursor-pointer ${textColor} ${
+      className={`bg-gradient-to-br ${bgClass} rounded-xl p-5 sm:p-7 relative overflow-hidden shadow-[0_15px_35px_rgba(0,0,0,0.3)] transform transition-all duration-700 hover:scale-[1.03] hover:shadow-[0_20px_50px_rgba(0,0,0,0.4)] cursor-pointer ${textColor} ${
         isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
       }`}
       style={{ transitionDelay: `${delay}ms` }}
@@ -306,7 +306,7 @@ function SkillCard({
           </div>
         )}
 
-        <h3 className="font-bold uppercase text-xl relative z-10 tracking-wide leading-relaxed">
+        <h3 className="font-bold uppercase text-lg sm:text-xl md:text-xl relative z-10 tracking-wide leading-relaxed">
           {title.split(" ").map((word, i) => (
             <React.Fragment key={i}>
               {word} {i % 2 === 0 && <br />}
@@ -316,7 +316,7 @@ function SkillCard({
       </div>
 
       <div
-        className={`absolute bottom-4 right-4 w-12 h-12 rounded-full border ${borderColor} flex items-center justify-center transition-all duration-300 hover:scale-110 hover:bg-white/20 group`}
+        className={`absolute bottom-4 right-4 w-10 h-10 sm:w-12 sm:h-12 rounded-full border ${borderColor} flex items-center justify-center transition-all duration-300 hover:scale-110 hover:bg-white/20 group`}
       >
         <span className="text-lg transition-transform duration-300 group-hover:rotate-45">+</span>
       </div>
