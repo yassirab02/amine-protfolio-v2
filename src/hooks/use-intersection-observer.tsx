@@ -14,7 +14,7 @@ export function useIntersectionObserver({
   freezeOnceVisible = true,
 }: UseIntersectionObserverProps = {}): [boolean, RefObject<HTMLDivElement>] {
   const [isVisible, setIsVisible] = useState(false)
-  const ref = useRef<HTMLDivElement>(null)
+  const ref = useRef<HTMLDivElement>(null) as RefObject<HTMLDivElement>
   const frozen = useRef(false)
 
   useEffect(() => {
