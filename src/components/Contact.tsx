@@ -8,13 +8,12 @@ import {
   Send,
   ArrowRight,
   MessageSquare,
-  Clock,
   Instagram,
   Twitter,
   Linkedin,
   Camera,
   Play,
-  ChevronRight,
+  MoreHorizontal,
 } from "lucide-react"
 
 // Custom hook for intersection observer - same as in LatestProjects
@@ -96,28 +95,33 @@ export default function Contact() {
   }
 
   // Track mouse position for button hover effect
+  /*
   useEffect(() => {
-    if (!buttonRef.current) return
+    const button = buttonRef.current
+    if (!button) return
 
     const handleMouseMove = (e) => {
-      if (!buttonRef.current) return
-      const rect = buttonRef.current.getBoundingClientRect()
+      const rect = button.getBoundingClientRect()
       setMousePosition({
         x: e.clientX - rect.left,
         y: e.clientY - rect.top,
       })
     }
 
-    if (hoverButton) {
-      buttonRef.current.addEventListener("mousemove", handleMouseMove)
-    }
+    const handleMouseEnter = () => setHoverButton(true)
+    const handleMouseLeave = () => setHoverButton(false)
+
+    button.addEventListener("mousemove", handleMouseMove)
+    button.addEventListener("mouseenter", handleMouseEnter)
+    button.addEventListener("mouseleave", handleMouseLeave)
 
     return () => {
-      if (buttonRef.current) {
-        buttonRef.current.removeEventListener("mousemove", handleMouseMove)
-      }
+      button.removeEventListener("mousemove", handleMouseMove)
+      button.removeEventListener("mouseenter", handleMouseEnter)
+      button.removeEventListener("mouseleave", handleMouseLeave)
     }
-  }, [hoverButton])
+  }, [buttonRef.current])
+  */
 
   // Animated background effect
   useEffect(() => {
@@ -210,7 +214,7 @@ export default function Contact() {
 
         // Add glow effect to some particles
         if (index % 5 === 0) {
-          if (!ctx) return;
+          if (!ctx) return
           const gradient = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, pulseRadius * 3)
           gradient.addColorStop(0, p.color.replace(/[\d.]+\)$/g, `${opacity * 0.5})`))
           gradient.addColorStop(1, p.color.replace(/[\d.]+\)$/g, "0)"))
@@ -300,7 +304,7 @@ export default function Contact() {
       </div>
 
       {/* Grid pattern */}
-      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGZpbGw9IiNmZmZmZmYwNSIgZD0iTTM2IDM0aDR2MWgtNHYtMXptMC0yaDF2NGgtMXYtNHptMi0yaDF2MWgtMXYtMXptLTIgMmgtMXYxaDF2LTF6bS0yLTJoMXYxaC0xdi0xem0yLTJoMXYxaC0xdi0xem0tMi0yaDF2MWgtMXYtMXptLTItMmgxdjFoLTF2LTF6bS0yIDBoMXYxaC0xdi0xem0tMi0yaDF2MWgtMXYtMXptLTIgMGgxdjFoLTF2LTF6bS0yLTJoMXYxaC0xdi0xem0tMiAwaDF2MWgtMXYtMXptLTIgMGgxdjFoLTF2LTF6bS0yLTJoMXYxaC0xdi0xem0tMiAwaDF2MWgtMXYtMXptLTIgMGgxdjFoLTF2LTF6Ii8+PC9nPjwvc3ZnPg==')] opacity-10"></div>
+      <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGZpbGw9IiNmZmZmZmYwNSIgZD0iTTM2IDM0aDR2MWgtNHYtMXptMC0yaDF2NGgtMXYtNHptMi0yaDF2MWgtMXYtMXptLTIgMmgtMXYxaDF2LTF6bS0yLTJoMXYxaC0xdi0xem0yLTJoMXYxaC0xdi0xem0tMi0yaDF2MWgtMXYtMXptLTItMmgxdjFoLTF2LTF6bS0yIDBoMXYxaC0xdi0xem0tMi0yaDF2MWgtMXYtMXptLTItMmgxdjFoLTF2LTF6bS0yLTJoMXYxaC0xdi0xem0tMiAwaDF2MWgtMXYtMXptLTIgMGgxdjFoLTF2LTF6bS0yLTJoMXYxaC0xdi0xem0tMiAwaDF2MWgtMXYtMXptLTIgMGgxdjFoLTF2LTF6Ii8+PC9nPjwvc3ZnPg==')] opacity-10"></div>
 
       <div className="max-w-7xl mx-auto relative z-10">
         <div
@@ -602,12 +606,13 @@ export default function Contact() {
                           { icon: Play, label: "Videography" },
                           { icon: Instagram, label: "Social Media" },
                           { icon: Mail, label: "Marketing" },
+                          { icon: MoreHorizontal, label: "Other" },
                         ].map((service, index) => (
                           <div key={index} className="flex items-center">
-                            <div className="relative flex items-center">
+                            <label className="relative flex items-center w-full cursor-pointer">
                               <input type="checkbox" id={`service-${index}`} className="peer sr-only" />
                               <div className="w-5 h-5 border border-orange-500/30 rounded bg-black/60 peer-checked:bg-orange-500/20 peer-checked:border-orange-500 transition-all duration-200"></div>
-                              <div className="absolute left-0.5 top-0.5 w-4 h-4 scale-0 peer-checked:scale-100 transition-transform duration-200 text-orange-500 flex items-center justify-center">
+                              <div className="absolute left-0.5 top-0.5 w-4 h-4 scale-0 peer-checked:scale-100 transition-transform duration-200 text-orange-500 flex items-center justify-center pointer-events-none">
                                 <svg
                                   xmlns="http://www.w3.org/2000/svg"
                                   viewBox="0 0 24 24"
@@ -621,14 +626,11 @@ export default function Contact() {
                                   <polyline points="20 6 9 17 4 12"></polyline>
                                 </svg>
                               </div>
-                              <label
-                                htmlFor={`service-${index}`}
-                                className="ml-2 text-sm text-gray-300 flex items-center cursor-pointer"
-                              >
+                              <span className="ml-2 text-sm text-gray-300 flex items-center">
                                 <service.icon className="w-4 h-4 mr-2 text-orange-500" />
                                 {service.label}
-                              </label>
-                            </div>
+                              </span>
+                            </label>
                           </div>
                         ))}
                       </div>
@@ -638,20 +640,9 @@ export default function Contact() {
                       ref={buttonRef}
                       type="submit"
                       disabled={isSubmitting}
-                      onMouseEnter={() => setHoverButton(true)}
-                      onMouseLeave={() => setHoverButton(false)}
-                      className="group relative overflow-hidden mt-4 px-8 py-4 rounded-xl border border-orange-500/30 bg-gradient-to-r from-orange-500 to-orange-400 hover:from-black hover:to-black transition-all duration-500 hover:shadow-[0_10px_25px_-5px_rgba(255,115,0,0.3)] disabled:opacity-70 disabled:cursor-not-allowed"
+                      className="group relative hover:cursor-pointer overflow-hidden mt-4 px-8 py-4 rounded-full border border-orange-500/30 bg-orange-500 hover:bg-black/80 transition-all duration-300 hover:shadow-[0_0_15px_rgba(255,115,0,0.3)] disabled:opacity-70 disabled:cursor-not-allowed"
                     >
-                      <span
-                        className="absolute inset-0 w-full h-full bg-gradient-to-r from-orange-500 to-orange-400 transition-all duration-300 opacity-0 group-hover:opacity-100"
-                        style={{
-                          clipPath: hoverButton
-                            ? `circle(${Math.max(buttonRef.current?.offsetWidth || 0, buttonRef.current?.offsetHeight || 0) * 2}px at ${mousePosition.x}px ${mousePosition.y}px)`
-                            : "circle(0px at 50% 50%)",
-                          transition: "clip-path 0.5s ease-out",
-                        }}
-                      ></span>
-                      <span className="relative z-10 text-white font-medium flex items-center justify-center gap-2 group-hover:text-white transition-colors">
+                      <span className="relative z-10 text-white font-medium flex items-center justify-center gap-2">
                         {isSubmitting ? (
                           <>
                             <svg
@@ -683,6 +674,7 @@ export default function Contact() {
                           </>
                         )}
                       </span>
+                      <span className="absolute bottom-0 left-0 w-0 h-1 bg-gradient-to-r from-orange-500 to-orange-300 transition-all duration-300 group-hover:w-full"></span>
                     </button>
                   </form>
                 </>
