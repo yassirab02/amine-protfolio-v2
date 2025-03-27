@@ -64,7 +64,7 @@ export default function Footer() {
                       hover:bg-orange-600 transition-colors duration-200 cursor-pointer
                       hover:scale-105 transform pointer-events-auto"
           >
-            FOLLOW 
+            FOLLOW ME
           </button>
         </div>
 

@@ -1,12 +1,45 @@
-import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from 'react-router-dom'; // Import BrowserRouter
-import App from './App';
-import './index.css'
+import * as React from "react";
+import * as ReactDOM from "react-dom/client";
+import {
+  createBrowserRouter,
+  RouterProvider,
+  Outlet,
+} from "react-router-dom";
+import "./index.css";
+import Navbar from "./components/Navbar";
+import ErrorPage from "./components/ErrorPage";
+import Services from "./components/Services";
+import Home from "./pages/Home";
 
+// Navbar component should include an Outlet for nested routes
+function Layout() {
+  return (
+    <>
+      <Navbar />
+      <Outlet /> {/* This renders the child route elements */}
+    </>
+  );
+}
 
-// Render the root component with BrowserRouter
+const router = createBrowserRouter([
+  {
+    element: <Layout />,
+    errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "/services",
+        element: <Services />,
+      },
+    ],
+  },
+  {
+      path: "/",
+      element: <Home />,
+  },
+]);
+
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <BrowserRouter> {/* Wrap your app with BrowserRouter for routing */}
-    <App />
-  </BrowserRouter>
+  <React.StrictMode>
+    <RouterProvider router={router} />
+  </React.StrictMode>
 );
