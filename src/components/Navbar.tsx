@@ -7,7 +7,6 @@
     { name: "Home", href: "/", active: false },
     { name: "Services", href: "/services", active: false },
     { name: "Projects", href: "/projects", active: false },
-    { name: "About", href: "/about", active: false },
     { name: "Contact", href: "/contact", active: false },
   ]
 
