@@ -10,6 +10,7 @@ import Navbar from "./components/Navbar";
 import ErrorPage from "./components/ErrorPage";
 import Services from "./components/Services";
 import Home from "./pages/Home";
+import Projects from "./components/Projects";
 
 // Navbar component should include an Outlet for nested routes
 function Layout() {
@@ -29,6 +30,10 @@ const router = createBrowserRouter([
       {
         path: "/services",
         element: <Services />,
+      },
+      {
+        path: "/projects",
+        element: <Projects />,
       },
     ],
   },
