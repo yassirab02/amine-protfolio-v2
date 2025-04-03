@@ -8,9 +8,9 @@ import {
 import "./index.css";
 import Navbar from "./components/Navbar";
 import ErrorPage from "./components/ErrorPage";
-import Services from "./components/Services";
 import Home from "./pages/Home";
 import Projects from "./components/Projects";
+import Services from "./components/Services";
 
 // Navbar component should include an Outlet for nested routes
 function Layout() {

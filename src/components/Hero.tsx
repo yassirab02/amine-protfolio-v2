@@ -1,36 +1,36 @@
-"use client"
+"use client";
 
-import React, { useEffect, useState, useRef } from "react"
+import React, { useEffect, useState, useRef } from "react";
 
 export default function ProductDesignerHero() {
-  const [isVisible, setIsVisible] = useState(false)
-  const containerRef = useRef<HTMLDivElement>(null)
+  const [isVisible, setIsVisible] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    setIsVisible(true)
+    setIsVisible(true);
 
     // Mouse parallax effect
     const handleMouseMove = (e: MouseEvent) => {
-      if (!containerRef.current) return
+      if (!containerRef.current) return;
 
-      const elements = containerRef.current.querySelectorAll(".parallax")
-      const container = containerRef.current.getBoundingClientRect()
-      const centerX = container.left + container.width / 2
-      const centerY = container.top + container.height / 2
+      const elements = containerRef.current.querySelectorAll(".parallax");
+      const container = containerRef.current.getBoundingClientRect();
+      const centerX = container.left + container.width / 2;
+      const centerY = container.top + container.height / 2;
 
       elements.forEach((el) => {
-        const element = el as HTMLElement
-        const speed = Number.parseFloat(element.dataset.speed || "0.05")
-        const moveX = (e.clientX - centerX) * speed
-        const moveY = (e.clientY - centerY) * speed
+        const element = el as HTMLElement;
+        const speed = Number.parseFloat(element.dataset.speed || "0.05");
+        const moveX = (e.clientX - centerX) * speed;
+        const moveY = (e.clientY - centerY) * speed;
 
-        element.style.transform = `translate(${moveX}px, ${moveY}px)`
-      })
-    }
+        element.style.transform = `translate(${moveX}px, ${moveY}px)`;
+      });
+    };
 
-    document.addEventListener("mousemove", handleMouseMove)
-    return () => document.removeEventListener("mousemove", handleMouseMove)
-  }, [])
+    document.addEventListener("mousemove", handleMouseMove);
+    return () => document.removeEventListener("mousemove", handleMouseMove);
+  }, []);
 
   return (
     <div
@@ -87,7 +87,9 @@ export default function ProductDesignerHero() {
           {/* Profile Card */}
           <div
             className={`bg-gradient-to-br from-black/80 via-gray-900/50 to-black/80 backdrop-blur-xl rounded-3xl p-8 text-white flex flex-col items-center max-w-[340px] shadow-[0_20px_80px_rgba(255,87,34,0.15)] border border-white/10 transition-all duration-700 delay-300 hover:shadow-[0_20px_80px_rgba(255,87,34,0.25)] hover:border-orange-500/30 ${
-              isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"
+              isVisible
+                ? "opacity-100 translate-x-0"
+                : "opacity-0 -translate-x-10"
             }`}
           >
             {/* Card glow effect */}
@@ -134,22 +136,34 @@ export default function ProductDesignerHero() {
               </div>
               <div className="border border-white/15 rounded-xl p-5 text-sm text-center bg-black/50 backdrop-blur-sm shadow-lg">
                 <p className="text-gray-300 leading-relaxed">
-                  A Videographer and Photographer capturing moments through stunning visuals.
+                  A Videographer and Photographer capturing moments through
+                  stunning visuals.
                 </p>
               </div>
             </div>
 
             <div className="flex gap-4 mt-4">
               {/* Social Icons */}
-              {["instagram", "whatsapp", "linkedin"].map((social, index) => (
-                <div
-                  key={social}
-                  className="rounded-full p-2.5 border border-white/15 flex items-center justify-center w-11 h-11 bg-black/50 hover:bg-gradient-to-br hover:from-orange-500 hover:to-orange-600 hover:border-transparent hover:text-white shadow-md hover:shadow-[0_5px_20px_rgba(255,87,34,0.4)] transition-all duration-300 cursor-pointer transform hover:-translate-y-1"
-                  style={{ transitionDelay: `${index * 100 + 600}ms` }}
-                >
-                  <SocialIcon type={social} className="w-4.5 h-4.5" />
-                </div>
-              ))}
+              {["instagram", "whatsapp", "linkedin"].map((social, index) => {
+                const socialLinks: Record<string, string> = {
+                  instagram: "https://www.instagram.com/amine._.rihani?igsh=OHpyM2Zldmd0ZDYy&utm_source=qr",
+                  whatsapp: "https://wa.me/your-number",
+                  linkedin: "https://www.linkedin.com/in/amine-rihani-66487a216?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app",
+                };
+
+                return (
+                  <a
+                    key={social}
+                    href={socialLinks[social]}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="rounded-full p-2.5 border border-white/15 flex items-center justify-center w-11 h-11 bg-black/50 hover:bg-gradient-to-br hover:from-orange-500 hover:to-orange-600 hover:border-transparent hover:text-white shadow-md hover:shadow-[0_5px_20px_rgba(255,87,34,0.4)] transition-all duration-300 cursor-pointer transform hover:-translate-y-1"
+                    style={{ transitionDelay: `${index * 100 + 600}ms` }}
+                  >
+                    <SocialIcon type={social} className="w-4.5 h-4.5" />
+                  </a>
+                );
+              })}
             </div>
           </div>
         </div>
@@ -172,8 +186,9 @@ export default function ProductDesignerHero() {
               </span>
             </h1>
             <p className="text-gray-400 mt-6 md:mt-10 max-w-xl text-base md:text-lg leading-relaxed">
-              Passionate about creating intuitive and engaging visual experiences. Specializing in transforming moments
-              into beautifully crafted memories that last forever.
+              Passionate about creating intuitive and engaging visual
+              experiences. Specializing in transforming moments into beautifully
+              crafted memories that last forever.
             </p>
 
             <div className="flex flex-wrap gap-8 md:gap-16 mt-10 md:mt-14">
@@ -221,7 +236,7 @@ export default function ProductDesignerHero() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 // Skill Card Component
@@ -233,19 +248,19 @@ function SkillCard({
   delay,
   icon,
 }: {
-  title: string
-  bgClass: string
-  textColor: string
-  borderColor: string
-  delay: number
-  icon: string
+  title: string;
+  bgClass: string;
+  textColor: string;
+  borderColor: string;
+  delay: number;
+  icon: string;
 }) {
-  const [isVisible, setIsVisible] = useState(false)
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setIsVisible(true), 100)
-    return () => clearTimeout(timer)
-  }, [])
+    const timer = setTimeout(() => setIsVisible(true), 100);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <div
@@ -318,10 +333,12 @@ function SkillCard({
       <div
         className={`absolute bottom-4 right-4 w-10 h-10 sm:w-12 sm:h-12 rounded-full border ${borderColor} flex items-center justify-center transition-all duration-300 hover:scale-110 hover:bg-white/20 group`}
       >
-        <span className="text-lg transition-transform duration-300 group-hover:rotate-45">+</span>
+        <span className="text-lg transition-transform duration-300 group-hover:rotate-45">
+          +
+        </span>
       </div>
     </div>
-  )
+  );
 }
 
 // Social Icon Component
@@ -345,7 +362,7 @@ function SocialIcon({ type, className }: { type: string; className?: string }) {
           <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
           <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
         </svg>
-      )
+      );
     case "linkedin":
       return (
         <svg
@@ -364,7 +381,7 @@ function SocialIcon({ type, className }: { type: string; className?: string }) {
           <rect x="2" y="9" width="4" height="12"></rect>
           <circle cx="4" cy="4" r="2"></circle>
         </svg>
-      )
+      );
     case "whatsapp":
       return (
         <svg
@@ -382,9 +399,8 @@ function SocialIcon({ type, className }: { type: string; className?: string }) {
           <path d="M21.5 12.1c0-5.2-4.2-9.4-9.4-9.4S2.7 6.9 2.7 12.1c0 1.7.4 3.3 1.3 4.7L3 22l5.3-1.4c1.3.7 2.7 1 4.2 1 5.1 0 9.3-4.2 9.3-9.3z"></path>
           <path d="M8.9 9.6c-.2-.4-.4-.4-.7-.5h-.6c-.2 0-.5.1-.7.3-.2.2-.8.7-.8 1.7s.8 2 1 2.2c.1.1 1.6 2.4 4 3.2 2 .6 2.4.5 2.9.5s1.5-.6 1.7-1.2c.2-.6.2-1.2.1-1.2s-.2 0-.4 0-.6.1-1 .4c-.3.2-.7.5-1.2.4-.5 0-1.5-.6-2-1.2-.7-.8-1.1-1.4-1.3-1.6-.2-.2-.1-.3 0-.5.2-.2.6-.7.6-.9s0-.5 0-.7c.1-.2 0-.3 0-.3z"></path>
         </svg>
-      )
+      );
     default:
-      return null
+      return null;
   }
 }
-
