@@ -152,16 +152,6 @@ export default function Photography() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [selectedImage]);
 
-  // Toggle mobile menu
-  const toggleMobileMenu = () => {
-    setMobileMenuOpen(!mobileMenuOpen);
-    if (!mobileMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "auto";
-    }
-  };
-
   return (
     <div className="bg-black text-white min-h-screen">
       {/* Background Elements */}
@@ -171,7 +161,7 @@ export default function Photography() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[radial-gradient(circle,rgba(0,0,0,1),rgba(20,20,20,1)_70%)]"></div>
       </div>
       {/* Main Content */}
-      <main className="px-4 sm:px-6 py-4 pt-24 relative z-10">
+      <main className="px-4 sm:px-6 py-4 pt-12 relative z-10">
         <div className="max-w-7xl mx-auto">
           {/* Title - Artistic */}
           <div className="relative mb-16 md:mb-24">

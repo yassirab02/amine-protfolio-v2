@@ -1,37 +1,37 @@
-"use client";
+"use client"
 
-import { useState, useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react"
+import { Link, useLocation } from "react-router-dom"
 
 const navLinks = [
   { name: "Home", href: "/" },
   { name: "Services", href: "/services" },
   { name: "Videography", href: "/projects" },
-  { name: "Photograpphy", href: "/photography" },
-];
+  { name: "Photography", href: "/photography" },
+]
 
 export default function Navbar() {
-  const location = useLocation();
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+  const location = useLocation()
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
 
   const toggleMobileMenu = () => {
-    setMobileMenuOpen(!mobileMenuOpen);
-  };
+    setMobileMenuOpen(!mobileMenuOpen)
+  }
 
   useEffect(() => {
     const handleScroll = () => {
-      const isScrolled = window.scrollY > 50;
+      const isScrolled = window.scrollY > 50
       if (isScrolled !== scrolled) {
-        setScrolled(isScrolled);
+        setScrolled(isScrolled)
       }
-    };
+    }
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll)
     return () => {
-      window.removeEventListener("scroll", handleScroll);
-    };
-  }, [scrolled]);
+      window.removeEventListener("scroll", handleScroll)
+    }
+  }, [scrolled])
 
   return (
     <header className="sticky top-0 w-full bg-black z-40">
@@ -48,11 +48,7 @@ export default function Navbar() {
         >
           <div className="text-3xl font-extrabold tracking-tight text-white">
             <span className="relative inline-block h-8 w-32">
-              <img
-                src="/src/assets/my logo white.png"
-                alt="Logo"
-                className="h-full w-full object-contain block"
-              />
+              <img src="/src/assets/my logo white.png" alt="Logo" className="h-full w-full object-contain block" />
             </span>
           </div>
         </Link>
@@ -62,20 +58,32 @@ export default function Navbar() {
           <div className="rounded-full bg-zinc-900/90 px-6 py-2.5 shadow-[0_0_15px_rgba(0,0,0,0.2)] backdrop-blur-sm">
             <nav className="flex items-center space-x-8">
               {navLinks.map((link) => {
-                const isActive = location.pathname === link.href;
+                const isActive = location.pathname === link.href
                 return (
                   <Link
                     key={link.name}
                     to={link.href}
-                    className={`relative text-sm font-medium transition-all duration-200 ${
-                      isActive
-                        ? "text-orange-400 after:absolute after:-bottom-1 after:left-0 after:h-[2px] after:w-full after:bg-orange-500/50 after:content-['']"
-                        : "text-white/90 hover:text-white hover:after:absolute hover:after:-bottom-1 hover:after:left-0 hover:after:h-[2px] hover:after:w-full hover:after:bg-white/20 hover:after:content-['']"
+                    className={`relative text-sm font-medium transition-all duration-300 ${
+                      isActive ? "text-orange-400 group" : "text-white/90 hover:text-white"
                     }`}
                   >
-                    {link.name}
+                    <span className="relative z-10">{link.name}</span>
+                    {isActive && (
+                      <>
+                        {/* Glowing underline effect */}
+                        <span className="absolute -bottom-1 left-0 h-[2px] w-full bg-gradient-to-r from-orange-500/80 via-orange-400 to-orange-500/80 rounded-full shadow-[0_0_8px_rgba(249,115,22,0.5)]"></span>
+
+                        {/* Subtle background glow */}
+                        <span className="absolute -inset-x-3 -inset-y-1 bg-orange-500/10 rounded-full blur-sm -z-10"></span>
+                      </>
+                    )}
+
+                    {/* Hover effect for non-active items */}
+                    {!isActive && (
+                      <span className="absolute -bottom-1 left-0 h-[2px] w-0 bg-white/20 transition-all duration-300 group-hover:w-full"></span>
+                    )}
                   </Link>
-                );
+                )
               })}
 
               {scrolled && (
@@ -92,7 +100,7 @@ export default function Navbar() {
         {/* Auth Buttons */}
         <div className="hidden items-center space-x-5 md:flex">
           <Link to="/book-now">
-            <button className="rounded-md bg-gradient-to-r from-orange-600 to-orange-500 px-5 py-2 text-sm font-medium text-white hover:cursor-pointer shadow-[0_4px_10px_rgba(124,58,237,0.3)] transition-all duration-200 hover:shadow-[0_6px_15px_rgba(124,58,237,0.4)]">
+            <button className="rounded-md bg-gradient-to-r from-orange-600 to-orange-500 px-5 py-2 text-sm font-medium text-white hover:cursor-pointer shadow-[0_4px_10px_rgba(249,115,22,0.3)] transition-all duration-200 hover:shadow-[0_6px_15px_rgba(249,115,22,0.4)]">
               Hire Me
             </button>
           </Link>
@@ -111,12 +119,7 @@ export default function Navbar() {
             stroke="currentColor"
             className="h-6 w-6"
           >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              d="M4 6h16M4 12h16M4 18h16"
-            />
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
           </svg>
         </button>
 
@@ -127,11 +130,7 @@ export default function Navbar() {
           }`}
         >
           <div className="flex justify-end">
-            <button
-              onClick={toggleMobileMenu}
-              className="text-white"
-              title="Close mobile menu"
-            >
+            <button onClick={toggleMobileMenu} className="text-white" title="Close mobile menu">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
@@ -139,37 +138,35 @@ export default function Navbar() {
                 stroke="currentColor"
                 className="h-6 w-6"
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
           </div>
 
           <div className="mt-8 flex flex-col gap-6">
             {navLinks.map((link) => {
-              const isActive = location.pathname === link.href;
+              const isActive = location.pathname === link.href
               return (
                 <Link
                   key={link.name}
                   to={link.href}
-                  className={`text-lg font-medium transition-colors hover:text-white ${
-                    isActive ? "text-orange-400" : "text-white/80"
+                  className={`relative text-lg font-medium transition-all duration-300 ${
+                    isActive ? "text-orange-400" : "text-white/80 hover:text-white"
                   }`}
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  {link.name}
+                  <span>{link.name}</span>
+                  {isActive && (
+                    <span className="absolute -left-4 top-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-orange-500 shadow-[0_0_8px_rgba(249,115,22,0.8)]"></span>
+                  )}
                 </Link>
-              );
+              )
             })}
 
             <div className="mt-8 flex flex-col gap-4">
               <Link to="/book-now">
                 <button
-                  className="rounded-md bg-gradient-to-r from-orange-600 to-orange-500 px-4 py-2 text-white shadow-[0_4px_10px_rgba(124,58,237,0.3)] hover:shadow-[0_6px_15px_rgba(124,58,237,0.4)]"
+                  className="rounded-md bg-gradient-to-r from-orange-600 to-orange-500 px-4 py-2 text-white shadow-[0_4px_10px_rgba(249,115,22,0.3)] hover:shadow-[0_6px_15px_rgba(249,115,22,0.4)]"
                   title="Hire Me"
                 >
                   Hire Me
@@ -181,12 +178,10 @@ export default function Navbar() {
 
         {/* Mobile Menu Overlay */}
         {mobileMenuOpen && (
-          <div
-            className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm"
-            onClick={() => setMobileMenuOpen(false)}
-          />
+          <div className="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm" onClick={() => setMobileMenuOpen(false)} />
         )}
       </div>
     </header>
-  );
+  )
 }
+
