@@ -168,6 +168,7 @@ export default function Navbar() {
                 <button
                   className="rounded-md bg-gradient-to-r from-orange-600 to-orange-500 px-4 py-2 text-white shadow-[0_4px_10px_rgba(249,115,22,0.3)] hover:shadow-[0_6px_15px_rgba(249,115,22,0.4)]"
                   title="Hire Me"
+                  onClick={() => setMobileMenuOpen(false)}
                 >
                   Hire Me
                 </button>

@@ -71,7 +71,7 @@ export default function Projects() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsTransitioning(false)
-    }, 600)
+    }, 300)
     return () => clearTimeout(timer)
   }, [activeProject])
 
@@ -86,8 +86,8 @@ export default function Projects() {
       opacity: 1,
       transition: {
         when: "beforeChildren",
-        staggerChildren: 0.2,
-        duration: 0.6,
+        staggerChildren: 0.1,
+        duration: 0.3,
       },
     },
   }
@@ -97,14 +97,14 @@ export default function Projects() {
     visible: {
       y: 0,
       opacity: 1,
-      transition: { duration: 0.5 },
+      transition: { duration: 0.3 },
     },
   }
 
   const featuredProjectVariants = {
     initial: { opacity: 0, scale: 0.95 },
-    animate: { opacity: 1, scale: 1, transition: { duration: 0.7, ease: "easeOut" } },
-    exit: { opacity: 0, scale: 1.05, transition: { duration: 0.3 } },
+    animate: { opacity: 1, scale: 1, transition: { duration: 0.4, ease: "easeOut" } },
+    exit: { opacity: 0, scale: 1.05, transition: { duration: 0.2 } },
   }
 
   return (
@@ -112,7 +112,7 @@ export default function Projects() {
       className="py-24 bg-gradient-to-b from-black to-zinc-900 text-white overflow-hidden"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 1 }}
+      transition={{ duration: 0.4 }}
     >
       <motion.div
         className="container mx-auto px-4 max-w-7xl"
@@ -263,7 +263,7 @@ export default function Projects() {
               className="absolute top-1/2 left-4 -translate-y-1/2 z-20 opacity-0 group-hover:opacity-100 transition-opacity"
               initial={{ x: -20, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
-              transition={{ delay: 0.8 }}
+              transition={{ delay: 0.3 }}
             >
               <motion.button
                 onClick={prevProject}
@@ -279,7 +279,7 @@ export default function Projects() {
               className="absolute top-1/2 right-4 -translate-y-1/2 z-20 opacity-0 group-hover:opacity-100 transition-opacity"
               initial={{ x: 20, opacity: 0 }}
               animate={{ x: 0, opacity: 1 }}
-              transition={{ delay: 0.8 }}
+              transition={{ delay: 0.3 }}
             >
               <motion.button
                 onClick={nextProject}
