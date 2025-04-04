@@ -1,5 +1,5 @@
 import Brands from "../components/Brands";
-import Contact from "../components/Contact";
+import ContactHome from "../components/ContactHome";
 import Footer from "../components/Footer";
 import Hero from "../components/Hero";
 import LatestProjects from "../components/LatestProjects";
@@ -12,7 +12,7 @@ export default function Home() {
       <Hero />
       <Brands />
       <LatestProjects />
-      <Contact />
+      <ContactHome />
       <Footer />
      </div>
   );
