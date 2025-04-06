@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState, useRef } from "react";
+import {Camera, Video, Plus, Circle } from "lucide-react"
 
 export default function ProductDesignerHero() {
   const [isVisible, setIsVisible] = useState(false);
@@ -215,23 +216,23 @@ export default function ProductDesignerHero() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12 md:mt-16">
-            <SkillCard
-              title="Cinematography & Video Editing"
-              bgClass="from-orange-600 via-orange-500 to-orange-600"
-              textColor="text-white"
-              borderColor="border-white/30"
-              delay={1200}
-              icon="video"
-            />
+          <SkillCard
+          title="Cinematography & Video Editing"
+          bgClass="from-orange-600 via-orange-500 to-orange-600"
+          textColor="text-white"
+          borderColor="border-white/30"
+          delay={1200}
+          icon="video"
+        />
 
-            <SkillCard
-              title="Adobe Premiere Pro, After Effects, Lightroom, Photoshop"
-              bgClass="from-gray-50 via-white to-gray-50"
-              textColor="text-black"
-              borderColor="border-black/30"
-              delay={1300}
-              icon="camera"
-            />
+        <SkillCard
+          title="Adobe Premiere Pro, After Effects, Lightroom, Photoshop"
+          bgClass="from-gray-50 via-white to-gray-50"
+          textColor="text-black"
+          borderColor="border-black/30"
+          delay={1300}
+          icon="camera"
+        />
           </div>
         </div>
       </div>
@@ -264,80 +265,34 @@ function SkillCard({
 
   return (
     <div
-      className={`bg-gradient-to-br ${bgClass} rounded-xl p-5 sm:p-7 relative overflow-hidden shadow-[0_15px_35px_rgba(0,0,0,0.3)] transform transition-all duration-700 hover:scale-[1.03] hover:shadow-[0_20px_50px_rgba(0,0,0,0.4)] cursor-pointer ${textColor} ${
-        isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-      }`}
-      style={{ transitionDelay: `${delay}ms` }}
-    >
-      {/* Enhanced background effects */}
-      <div className="absolute top-0 right-0 w-48 h-48 bg-white/10 rounded-full -mr-20 -mt-20 blur-3xl"></div>
-      <div className="absolute bottom-0 left-0 w-48 h-48 bg-black/10 rounded-full -ml-20 -mb-20 blur-3xl"></div>
+    className={`bg-gradient-to-br ${bgClass} rounded-xl p-5 sm:p-7 relative overflow-hidden shadow-[0_15px_35px_rgba(0,0,0,0.3)] transform transition-all duration-700 hover:scale-[1.03] hover:shadow-[0_20px_50px_rgba(0,0,0,0.4)] cursor-pointer ${textColor} ${
+      isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
+    }`}
+    style={{ transitionDelay: `${delay}ms` }}
+  >
+    {/* Enhanced background effects */}
+    <div className="absolute top-0 right-0 w-48 h-48 bg-white/10 rounded-full -mr-20 -mt-20 blur-3xl"></div>
+    <div className="absolute bottom-0 left-0 w-48 h-48 bg-black/10 rounded-full -ml-20 -mb-20 blur-3xl"></div>
 
-      {/* Enhanced animated shine effect */}
-      <div className="absolute -inset-[100%] bg-gradient-to-r from-transparent via-white/15 to-transparent skew-x-[-20deg] animate-[shine_8s_ease-in-out_infinite]"></div>
+    {/* Enhanced animated shine effect */}
+    <div className="absolute -inset-[100%] bg-gradient-to-r from-transparent via-white/15 to-transparent skew-x-[-20deg] animate-[shine_8s_ease-in-out_infinite]"></div>
 
-      {/* Content */}
-      <div className="relative z-10">
-        {icon === "animation" ? (
-          <div className="mb-4 flex items-center">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="mr-3"
-            >
-              <path d="M5 3v16h16"></path>
-              <path d="m5 19 6-6"></path>
-              <path d="m2 6 3-3 3 3"></path>
-              <path d="m18 16 3-3 3 3"></path>
-              <path d="m19 5-7 7"></path>
-            </svg>
-            <div className="h-px flex-1 bg-current opacity-30"></div>
-          </div>
-        ) : (
-          <div className="mb-4 flex items-center">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              className="mr-3"
-            >
-              <polyline points="16 18 22 12 16 6"></polyline>
-              <polyline points="8 6 2 12 8 18"></polyline>
-            </svg>
-            <div className="h-px flex-1 bg-current opacity-30"></div>
-          </div>
-        )}
-
-        <h3 className="font-bold uppercase text-lg sm:text-xl md:text-xl relative z-10 tracking-wide leading-relaxed">
-          {title.split(" ").map((word, i) => (
-            <React.Fragment key={i}>
-              {word} {i % 2 === 0 && <br />}
-            </React.Fragment>
-          ))}
-        </h3>
+    {/* Content */}
+    <div className="relative z-10">
+      <div className="mb-4 flex items-center">
+        {icon === "video" ? <Video className="mr-3" /> : <Camera className="mr-3" />}
+        <div className="h-px flex-1 bg-current opacity-30"></div>
       </div>
 
-      <div
-        className={`absolute bottom-4 right-4 w-10 h-10 sm:w-12 sm:h-12 rounded-full border ${borderColor} flex items-center justify-center transition-all duration-300 hover:scale-110 hover:bg-white/20 group`}
-      >
-        <span className="text-lg transition-transform duration-300 group-hover:rotate-45">
-          +
-        </span>
-      </div>
+      <h3 className="font-bold uppercase text-lg sm:text-xl md:text-xl relative z-10 tracking-wide leading-relaxed">
+        {title.split(" ").map((word, i) => (
+          <React.Fragment key={i}>
+            {word} {i % 2 === 0 && <br />}
+          </React.Fragment>
+        ))}
+      </h3>
     </div>
+  </div>
   );
 }
 

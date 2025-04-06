@@ -217,7 +217,7 @@ export default function Videography() {
                       transition={{ duration: 0.6, delay: 0.5 }}
                     >
                       <motion.button
-                        className="bg-orange-500 text-black px-6 py-4 rounded-xl hover:bg-orange-600 transition-colors flex items-center gap-3 font-semibold shadow-lg shadow-orange-500/20 w-fit group"
+                        className="bg-orange-500 text-black px-6 py-4 rounded-xl hover:cursor-pointer hover:bg-orange-600 transition-colors flex items-center gap-3 font-semibold shadow-lg shadow-orange-500/20 w-fit group"
                         whileHover={{ scale: 1.05 }}
                         whileTap={{ scale: 0.98 }}
                         transition={{ type: "spring", stiffness: 400, damping: 17 }}
