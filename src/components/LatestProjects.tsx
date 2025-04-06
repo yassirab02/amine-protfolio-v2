@@ -3,19 +3,18 @@
 import { useState, useEffect, useRef } from "react"
 import { Play, Camera, ExternalLink, Star } from "lucide-react"
 
-// Custom hook for intersection observer
+// Updated custom hook using ref for persistent visibility tracking
 function useIntersectionObserver(options = {}) {
   const [isIntersecting, setIsIntersecting] = useState(false)
-  const [hasBeenVisible, setHasBeenVisible] = useState(false)
+  const hasBeenVisibleRef = useRef(false)
   const ref = useRef(null)
 
   useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => {
-      // If element is intersecting and hasn't been visible before
-      if (entry.isIntersecting && !hasBeenVisible) {
+      if (entry.isIntersecting && !hasBeenVisibleRef.current) {
         setIsIntersecting(true)
-        setHasBeenVisible(true)
-      } else if (!entry.isIntersecting && !hasBeenVisible) {
+        hasBeenVisibleRef.current = true
+      } else if (!entry.isIntersecting && !hasBeenVisibleRef.current) {
         setIsIntersecting(false)
       }
     }, options)
@@ -29,11 +28,10 @@ function useIntersectionObserver(options = {}) {
         observer.unobserve(ref.current)
       }
     }
-  }, [ref, options, hasBeenVisible])
+  }, [options]) // Removed ref from dependencies as it's a stable ref
 
   return [ref, isIntersecting]
 }
-
 export default function LatestProjects() {
   const [sectionRef, isVisible] = useIntersectionObserver({
     threshold: 0.1,

@@ -15,35 +15,34 @@ import {
   MoreHorizontal,
 } from "lucide-react";
 
-// Custom hook for intersection observer - same as in LatestProjects
+// Updated custom hook using ref for persistent visibility tracking
 function useIntersectionObserver(options = {}) {
-  const [isIntersecting, setIsIntersecting] = useState(false);
-  const [hasBeenVisible, setHasBeenVisible] = useState(false);
-  const ref = useRef(null);
+  const [isIntersecting, setIsIntersecting] = useState(false)
+  const hasBeenVisibleRef = useRef(false)
+  const ref = useRef(null)
 
   useEffect(() => {
     const observer = new IntersectionObserver(([entry]) => {
-      // If element is intersecting and hasn't been visible before
-      if (entry.isIntersecting && !hasBeenVisible) {
-        setIsIntersecting(true);
-        setHasBeenVisible(true);
-      } else if (!entry.isIntersecting && !hasBeenVisible) {
-        setIsIntersecting(false);
+      if (entry.isIntersecting && !hasBeenVisibleRef.current) {
+        setIsIntersecting(true)
+        hasBeenVisibleRef.current = true
+      } else if (!entry.isIntersecting && !hasBeenVisibleRef.current) {
+        setIsIntersecting(false)
       }
-    }, options);
+    }, options)
 
     if (ref.current) {
-      observer.observe(ref.current);
+      observer.observe(ref.current)
     }
 
     return () => {
       if (ref.current) {
-        observer.unobserve(ref.current);
+        observer.unobserve(ref.current)
       }
-    };
-  }, [ref, options, hasBeenVisible]);
+    }
+  }, [options]) // Removed ref from dependencies as it's a stable ref
 
-  return [ref, isIntersecting];
+  return [ref, isIntersecting]
 }
 
 export default function ContactHome() {
