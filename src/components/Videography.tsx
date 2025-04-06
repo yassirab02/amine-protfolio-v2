@@ -4,7 +4,7 @@ import { useState, useEffect } from "react"
 import { Film, Play, ChevronRight, ChevronLeft, Clock, User, Award } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
 
-export default function Projects() {
+export default function Videography() {
   const [activeProject, setActiveProject] = useState(0)
   const [isTransitioning, setIsTransitioning] = useState(false)
   const [isLoaded, setIsLoaded] = useState(false)

@@ -6,7 +6,7 @@ import { Link, useLocation } from "react-router-dom"
 const navLinks = [
   { name: "Home", href: "/" },
   { name: "Services", href: "/services" },
-  { name: "Videography", href: "/projects" },
+  { name: "Videography", href: "/Videography" },
   { name: "Photography", href: "/photography" },
 ]
 
@@ -101,7 +101,7 @@ export default function Navbar() {
         <div className="hidden items-center space-x-5 md:flex">
           <Link to="/book-now">
             <button className="rounded-md bg-gradient-to-r from-orange-600 to-orange-500 px-5 py-2 text-sm font-medium text-white hover:cursor-pointer shadow-[0_4px_10px_rgba(249,115,22,0.3)] transition-all duration-200 hover:shadow-[0_6px_15px_rgba(249,115,22,0.4)]">
-              Hire Me
+              Contact
             </button>
           </Link>
         </div>
@@ -167,10 +167,10 @@ export default function Navbar() {
               <Link to="/book-now">
                 <button
                   className="rounded-md bg-gradient-to-r from-orange-600 to-orange-500 px-4 py-2 text-white shadow-[0_4px_10px_rgba(249,115,22,0.3)] hover:shadow-[0_6px_15px_rgba(249,115,22,0.4)]"
-                  title="Hire Me"
+                  title="Contact"
                   onClick={() => setMobileMenuOpen(false)}
                 >
-                  Hire Me
+                  Contact
                 </button>
               </Link>
             </div>

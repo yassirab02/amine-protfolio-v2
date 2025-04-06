@@ -9,10 +9,10 @@ import "./index.css";
 import Navbar from "./components/Navbar";
 import ErrorPage from "./components/ErrorPage";
 import Home from "./pages/Home";
-import Projects from "./components/Projects";
 import Services from "./components/Services";
 import Contact from "./components/Contact";
 import Photography from "./components/photography";
+import Videography from "./components/Videography";
 
 // Navbar component should include an Outlet for nested routes
 function Layout() {
@@ -34,8 +34,8 @@ const router = createBrowserRouter([
         element: <Services />,
       },
       {
-        path: "/projects",
-        element: <Projects />,
+        path: "/Videography",
+        element: <Videography />,
       },
       {
         path: "/photography",
