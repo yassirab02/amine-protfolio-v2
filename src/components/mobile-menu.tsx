@@ -1,119 +1,130 @@
 "use client"
 
-import { useState } from "react"
-import {Link} from "react-router-dom"
-import { motion, AnimatePresence } from "framer-motion"
-import { Camera } from "lucide-react"
-import MenuBackground from "./mobile-background"
+import { useState, useEffect } from "react"
+import { Link } from "react-router-dom"
+import { AnimatePresence, motion } from "framer-motion"
 
 export default function MobileMenu() {
   const [isOpen, setIsOpen] = useState(false)
 
-  const toggleMenu = () => setIsOpen(!isOpen)
+  // Close menu when pressing escape key
+  useEffect(() => {
+    const handleEscape = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setIsOpen(false)
+    }
+
+    window.addEventListener("keydown", handleEscape)
+    return () => window.removeEventListener("keydown", handleEscape)
+  }, [])
+
+  const toggleMenu = () => {
+    setIsOpen(!isOpen)
+  }
 
   return (
     <>
-      {/* Mobile menu button */}
       <button
         onClick={toggleMenu}
-        className="lg:hidden flex items-center space-x-2 px-3 py-1 border border-gray-700 dark:border-gray-700 rounded-full text-sm text-gray-900 dark:text-white"
+        className="relative bg-transparent border border-white/70 text-white text-xs rounded-full px-4 py-1 overflow-hidden"
       >
-        <span>MENU</span>
+        <AnimatePresence mode="wait" initial={false}>
+          {isOpen ? (
+            <motion.span
+              key="close"
+              className="block"
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: -20, opacity: 0 }}
+              transition={{ duration: 0.2, ease: "easeInOut" }}
+            >
+              CLOSE
+            </motion.span>
+          ) : (
+            <motion.span
+              key="menu"
+              className="block"
+              initial={{ y: -20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: 20, opacity: 0 }}
+              transition={{ duration: 0.2, ease: "easeInOut" }}
+            >
+              MENU
+            </motion.span>
+          )}
+        </AnimatePresence>
       </button>
 
-      {/* Animated mobile menu overlay */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
-            className="fixed inset-0 z-50 bg-black flex flex-col overflow-hidden"
-            initial={{ y: "-100%" }}
-            animate={{ y: 0 }}
-            exit={{ y: "-100%" }}
-            transition={{ type: "tween", duration: 0.4, ease: "easeInOut" }}
+            className="fixed inset-x-0 top-[5.5rem] z-50 flex items-start justify-center px-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
           >
-            {/* Background effect */}
-            <MenuBackground />
+            {/* Backdrop - semi-transparent overlay */}
+            <div className="absolute inset-0" onClick={() => setIsOpen(false)} />
 
-            <div className="relative z-10 flex justify-between items-center p-4 border-b border-gray-800">
-              <Link to="/" className="text-2xl font-serif text-white" onClick={() => setIsOpen(false)}>
-                Amine
-              </Link>
-              <div className="flex items-center space-x-4">
-                <div className="px-3 py-1 border border-gray-700 rounded-full text-sm text-white flex items-center">
-                  <Camera className="w-4 h-4 mr-1" />
-                  F/24
-                </div>
-                <button
-                  onClick={toggleMenu}
-                  className="px-3 py-1 border border-gray-700 rounded-full text-sm text-white"
-                >
-                  CLOSE
-                </button>
-              </div>
-            </div>
-
-            <div className="relative z-10 flex-1 flex flex-col justify-center items-center space-y-8 p-4">
-              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>
+            {/* Menu card */}
+            <motion.div
+              className="relative w-[95%] max-w-md bg-black rounded-2xl overflow-hidden z-10 flex flex-col"
+              initial={{ y: -20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              exit={{ y: -20, opacity: 0 }}
+              transition={{ duration: 0.3, ease: "easeInOut" }}
+            >
+              {/* Menu items */}
+              <div className="flex flex-col items-center py-8 space-y-5">
                 <Link
                   to="/stills"
-                  className="text-3xl font-serif text-white hover:text-gray-300 transition-colors"
+                  className="text-xl font-medium text-white hover:text-blue-300 transition-colors"
                   onClick={() => setIsOpen(false)}
                 >
                   STILLS
                 </Link>
-              </motion.div>
-
-              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
                 <Link
                   to="/motion"
-                  className="text-3xl font-serif text-white hover:text-gray-300 transition-colors"
+                  className="text-xl font-medium text-white hover:text-blue-300 transition-colors"
                   onClick={() => setIsOpen(false)}
                 >
                   MOTION
                 </Link>
-              </motion.div>
-
-              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>
                 <Link
                   to="/about"
-                  className="text-3xl font-serif text-white hover:text-gray-300 transition-colors"
+                  className="text-xl font-medium text-white hover:text-blue-300 transition-colors"
                   onClick={() => setIsOpen(false)}
                 >
                   ABOUT
                 </Link>
-              </motion.div>
-
-              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }}>
                 <Link
                   to="https://instagram.com"
-                  className="text-3xl font-serif text-white hover:text-gray-300 transition-colors"
+                  className="text-xl font-medium text-white hover:text-blue-300 transition-colors"
                   onClick={() => setIsOpen(false)}
                 >
                   INSTAGRAM
                 </Link>
-              </motion.div>
-
-              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }}>
                 <Link
                   to="/contact"
-                  className="text-3xl font-serif text-white hover:text-gray-300 transition-colors"
+                  className="text-xl font-medium text-white hover:text-blue-300 transition-colors"
                   onClick={() => setIsOpen(false)}
                 >
                   EMAIL
                 </Link>
-              </motion.div>
-            </div>
+              </div>
 
-            <motion.div
-              className="relative z-10 p-8 text-center"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.6 }}
-            >
-              <h2 className="text-3xl md:text-4xl font-serif text-white leading-tight tracking-wide">
-                PHOTOGRAPHER
-                <br />& FILMMAKER
-              </h2>
+              {/* Photographer & Filmmaker section */}
+              <div className="relative h-16 w-full mt-4">
+                <div
+                  className="absolute inset-0 bg-cover bg-center"
+                  style={{
+                    backgroundImage: "url('/placeholder.svg?height=200&width=400')",
+                    filter: "brightness(0.4) contrast(1.2)",
+                  }}
+                />
+                <div className="absolute inset-0 bg-blue-900/30 flex items-center justify-center">
+                  <h2 className="text-lg font-bold text-white text-center">Amine Rihani</h2>
+                </div>
+              </div>
             </motion.div>
           </motion.div>
         )}
