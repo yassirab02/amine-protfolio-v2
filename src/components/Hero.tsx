@@ -7,8 +7,8 @@ export default function Hero() {
         {/* Image Container */}
         <div className="absolute inset-0">
           <img
-            src="/src/assets/me.png"
-            alt="Photographer silhouette against dramatic sky"
+            src="/assets/me.png"
+            alt="main picture"
             className="object-cover w-full h-full rounded-2xl md:rounded-3xl object-center"
           />
         </div>
