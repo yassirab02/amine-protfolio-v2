@@ -3,8 +3,7 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import { motion } from 'framer-motion';
 import { useEffect } from 'react';
-import { SpeedInsights } from "@vercel/speed-insights/next"
-
+import { SpeedInsights } from "@vercel/speed-insights/react"
 
 export default function Layout() {
   const location = useLocation();
