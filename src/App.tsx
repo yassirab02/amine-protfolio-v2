@@ -8,10 +8,12 @@ import ContactPage from './pages/ContactPage';
 import PortfolioPage from './pages/PortfolioPage';
 import NotFoundPage from './pages/NotFoundPage';
 import { AnimatePresence } from 'framer-motion';
+import { SpeedInsights } from "@vercel/speed-insights/react"
 
 
 function App() {
   return (
+    <>
     <AnimatePresence mode="wait">
       <Routes>
         <Route path="/" element={<Layout />}>
@@ -25,6 +27,8 @@ function App() {
         </Route>
       </Routes>
     </AnimatePresence>
+    <SpeedInsights />
+    </>
   );
 }
 
