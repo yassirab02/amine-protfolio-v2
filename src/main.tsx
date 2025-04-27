@@ -1,60 +1,13 @@
-import * as React from "react";
-import * as ReactDOM from "react-dom/client";
-import {
-  createBrowserRouter,
-  RouterProvider,
-  Outlet,
-} from "react-router-dom";
-import "./index.css";
-import Navbar from "./components/Navbar";
-import ErrorPage from "./components/ErrorPage";
-import Home from "./pages/Home";
-import Services from "./components/Services";
-import Contact from "./components/Contact";
-import Photography from "./components/photography";
-import Videography from "./components/Videography";
+import { StrictMode } from 'react';
+import { createRoot } from 'react-dom/client';
+import { BrowserRouter } from 'react-router-dom';
+import App from './App.tsx';
+import './index.css';
 
-// Navbar component should include an Outlet for nested routes
-function Layout() {
-  return (
-    <>
-      <Navbar />
-      <Outlet /> {/* This renders the child route elements */}
-    </>
-  );
-}
-
-const router = createBrowserRouter([
-  {
-    element: <Layout />,
-    errorElement: <ErrorPage />,
-    children: [
-      {
-        path: "/services",
-        element: <Services />,
-      },
-      {
-        path: "/Videography",
-        element: <Videography />,
-      },
-      {
-        path: "/photography",
-        element: <Photography />,
-      },
-      {
-        path: "/book-now",
-        element: <Contact />,
-      },
-    ],
-  },
-  {
-      path: "/",
-      element: <Home />,
-  },
-]);
-
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
+createRoot(document.getElementById('root')!).render(
+  <StrictMode>
+    <BrowserRouter>
+      <App />
+    </BrowserRouter>
+  </StrictMode>
 );

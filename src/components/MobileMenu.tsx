@@ -3,7 +3,7 @@
 import type React from "react"
 
 import { useState, useEffect } from "react"
-import {Link} from "react-router-dom"
+import { Link, useLocation } from "react-router-dom"
 import { AnimatePresence, motion } from "framer-motion"
 
 export default function MobileMenu() {
@@ -106,11 +106,16 @@ export default function MobileMenu() {
                   <MobileNavLink to="/about" onClick={() => setIsOpen(false)}>
                     ABOUT
                   </MobileNavLink>
-                  <MobileNavLink to="https://instagram.com" onClick={() => setIsOpen(false)}>
+                  <MobileNavLink 
+                    to="https://www.instagram.com/amine._.rihani?igsh=OHpyM2Zldmd0ZDYy&utm_source=qr" 
+                    onClick={() => setIsOpen(false)}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
                     INSTAGRAM
                   </MobileNavLink>
                   <MobileNavLink to="/contact" onClick={() => setIsOpen(false)}>
-                    EMAIL
+                    CONTACT
                   </MobileNavLink>
                 </div>
 
@@ -139,13 +144,28 @@ export default function MobileMenu() {
   )
 }
 
-// Custom Mobile NavLink component with enhanced hover effects
-function MobileNavLink({ to, children, onClick }: { to: string; children: React.ReactNode; onClick?: () => void }) {
+// Custom Mobile NavLink component with enhanced hover effects and active state
+function MobileNavLink({ to, children, onClick, target, rel }: { 
+  to: string; 
+  children: React.ReactNode; 
+  onClick?: () => void;
+  target?: string;
+  rel?: string;
+}) {
+  const location = useLocation();
+  const isActive = location.pathname === to || (to !== "/" && location.pathname.startsWith(to));
+  
   return (
     <Link
       to={to}
-      className="group relative px-5 py-2 text-xl font-light tracking-wider text-white/80 hover:text-white transition-all duration-500"
+      className={`group relative px-5 py-2 text-xl tracking-wider transition-all duration-500 ${
+        isActive 
+          ? "text-white font-normal" 
+          : "text-white/80 hover:text-white font-light"
+      }`}
       onClick={onClick}
+      target={target}
+      rel={rel}
     >
       {/* Decorative elements */}
       <span className="absolute -left-2 top-1/2 -translate-y-1/2 w-1 h-1 rounded-full bg-white/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100"></span>
@@ -153,17 +173,40 @@ function MobileNavLink({ to, children, onClick }: { to: string; children: React.
 
       {/* Main content */}
       <span className="relative z-10 overflow-hidden inline-block">
-        <span className="inline-block transform group-hover:translate-y-[-100%] transition-transform duration-500 ease-in-out">
-          {children}
-        </span>
-        <span className="absolute top-0 left-0 transform translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
-          {children}
-        </span>
+        {isActive ? (
+          <span>{children}</span>
+        ) : (
+          <>
+            <span className="inline-block transform group-hover:translate-y-[-100%] transition-transform duration-500 ease-in-out">
+              {children}
+            </span>
+            <span className="absolute top-0 left-0 transform translate-y-[100%] group-hover:translate-y-0 transition-transform duration-500 ease-in-out">
+              {children}
+            </span>
+          </>
+        )}
       </span>
 
-      {/* Hover effects */}
-      <span className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-700 ease-out"></span>
-      <span className="absolute -inset-1 bg-gradient-to-r from-white/0 via-white/5 to-white/0 rounded-lg opacity-0 group-hover:opacity-100 transform scale-y-0 group-hover:scale-y-100 transition-all duration-500 ease-out"></span>
+      {/* Active indicator dots and line */}
+      {isActive && (
+        <>
+          <span className="absolute -left-4 top-1/2 -translate-y-1/2 w-1 h-1 rounded-full bg-white"></span>
+          <span className="absolute -right-4 top-1/2 -translate-y-1/2 w-1 h-1 rounded-full bg-white"></span>
+        </>
+      )}
+      
+      {/* Hover/active effects */}
+      <span className={`absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white to-transparent transition-transform duration-700 ease-out ${
+        isActive 
+          ? "scale-x-100" 
+          : "scale-x-0 group-hover:scale-x-100"
+      }`}></span>
+      
+      <span className={`absolute -inset-1 bg-gradient-to-r from-white/0 via-white/5 to-white/0 rounded-lg transition-all duration-500 ease-out ${
+        isActive 
+          ? "opacity-100 scale-y-100" 
+          : "opacity-0 scale-y-0 group-hover:opacity-100 group-hover:scale-y-100"
+      }`}></span>
     </Link>
   )
 }
