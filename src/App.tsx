@@ -9,6 +9,7 @@ import PortfolioPage from './pages/PortfolioPage';
 import NotFoundPage from './pages/NotFoundPage';
 import { AnimatePresence } from 'framer-motion';
 
+
 function App() {
   return (
     <AnimatePresence mode="wait">
