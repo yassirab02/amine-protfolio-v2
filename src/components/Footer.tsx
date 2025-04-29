@@ -111,10 +111,17 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Footer bottom - Copyright and social */}
+        {/* Footer bottom - Social links and copyright */}
         <div className="pt-6 md:pt-10 flex flex-col md:flex-row justify-between items-center">
-         
-          <div className="flex space-x-6">
+          {/* On desktop: Copyright on left, social on right */}
+          {/* On mobile: Social on top, copyright below */}
+          <div className="hidden md:block">
+            <p className="text-black/50 dark:text-white/50 text-xs">
+              © {new Date().getFullYear()} Amine Rihani. All Rights Reserved.
+            </p>
+          </div>
+
+          <div className="flex space-x-6 mb-4 md:mb-0 md:order-2">
             <a
               href="https://www.instagram.com/amine._.rihani?igsh=OHpyM2Zldmd0ZDYy&utm_source=qr"
               target="_blank"
@@ -145,9 +152,12 @@ export default function Footer() {
             </Link>
           </div>
 
-          <p className="text-black/50 dark:text-white/50 text-xs mt-4 md:mb-0">
-            © {new Date().getFullYear()} Amine Rihani. All Rights Reserved.
-          </p>
+          {/* Mobile-only copyright below social icons */}
+          <div className="block md:hidden w-full text-center">
+            <p className="text-black/50 dark:text-white/50 text-xs">
+              © {new Date().getFullYear()} Amine Rihani. All Rights Reserved.
+            </p>
+          </div>
         </div>
       </div>
     </footer>
