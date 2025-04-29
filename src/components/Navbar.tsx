@@ -38,6 +38,7 @@ export default function Navbar() {
       <div className="hidden lg:flex space-x-6">
         <NavLink to="/stills">STILLS</NavLink>
         <NavLink to="/motion">MOTION</NavLink>
+        <NavLink to="/services">SERVICES</NavLink>
         <NavLink to="/about">ABOUT</NavLink>
       </div>
 

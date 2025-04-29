@@ -103,6 +103,9 @@ export default function MobileMenu() {
                   <MobileNavLink to="/motion" onClick={() => setIsOpen(false)}>
                     MOTION
                   </MobileNavLink>
+                  <MobileNavLink to="/services" onClick={() => setIsOpen(false)}>
+                    SERVICES
+                  </MobileNavLink>
                   <MobileNavLink to="/about" onClick={() => setIsOpen(false)}>
                     ABOUT
                   </MobileNavLink>

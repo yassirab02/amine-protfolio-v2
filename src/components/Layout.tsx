@@ -3,7 +3,6 @@ import Navbar from './Navbar';
 import Footer from './Footer';
 import { motion } from 'framer-motion';
 import { useEffect } from 'react';
-import { SpeedInsights } from "@vercel/speed-insights/react"; // <- import here
 
 export default function Layout() {
   const location = useLocation();
@@ -12,7 +11,9 @@ export default function Layout() {
     window.scrollTo(0, 0);
   }, [location.pathname]);
 
+  // Initialize theme from localStorage or system preference
   useEffect(() => {
+    // Check if theme exists in localStorage
     const savedTheme = localStorage.theme;
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     
@@ -24,6 +25,7 @@ export default function Layout() {
       localStorage.theme = 'light';
     }
 
+    // Listen for system theme changes
     const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
     const handleChange = (e: MediaQueryListEvent) => {
       if (!localStorage.theme) {
@@ -48,7 +50,6 @@ export default function Layout() {
         <Outlet />
       </motion.main>
       <Footer />
-      <SpeedInsights /> 
     </div>
   );
 }
