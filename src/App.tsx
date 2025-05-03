@@ -1,28 +1,88 @@
+import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
-import HomePage from './pages/HomePage';
-import StillsPage from './pages/StillsPage';
-import MotionPage from './pages/MotionPage';
-import AboutPage from './pages/AboutPage';
-import ContactPage from './pages/ContactPage';
-import PortfolioPage from './pages/PortfolioPage';
-import ServicesPage from './pages/ServicesPage';
-import NotFoundPage from './pages/NotFoundPage';
 import { AnimatePresence } from 'framer-motion';
+import LoadingSpinner from './components/LoadingSpinner'; // Create a simple loading component
+
+// Lazy load all page components
+const HomePage = lazy(() => import('./pages/HomePage'));
+const StillsPage = lazy(() => import('./pages/StillsPage'));
+const MotionPage = lazy(() => import('./pages/MotionPage'));
+const AboutPage = lazy(() => import('./pages/AboutPage'));
+const ContactPage = lazy(() => import('./pages/ContactPage'));
+const PortfolioPage = lazy(() => import('./pages/PortfolioPage'));
+const ServicesPage = lazy(() => import('./pages/ServicesPage'));
+const NotFoundPage = lazy(() => import('./pages/NotFoundPage'));
 
 function App() {
   return (
     <AnimatePresence mode="wait">
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<HomePage />} />
-          <Route path="stills" element={<StillsPage />} />
-          <Route path="motion" element={<MotionPage />} />
-          <Route path="about" element={<AboutPage />} />
-          <Route path="contact" element={<ContactPage />} />
-          <Route path="portfolio" element={<PortfolioPage />} />
-          <Route path="services" element={<ServicesPage />} />
-          <Route path="*" element={<NotFoundPage />} />
+          <Route 
+            index 
+            element={
+              <Suspense fallback={<LoadingSpinner />}>
+                <HomePage />
+              </Suspense>
+            } 
+          />
+          <Route 
+            path="stills" 
+            element={
+              <Suspense fallback={<LoadingSpinner />}>
+                <StillsPage />
+              </Suspense>
+            } 
+          />
+          <Route 
+            path="motion" 
+            element={
+              <Suspense fallback={<LoadingSpinner />}>
+                <MotionPage />
+              </Suspense>
+            } 
+          />
+          <Route 
+            path="about" 
+            element={
+              <Suspense fallback={<LoadingSpinner />}>
+                <AboutPage />
+              </Suspense>
+            } 
+          />
+          <Route 
+            path="contact" 
+            element={
+              <Suspense fallback={<LoadingSpinner />}>
+                <ContactPage />
+              </Suspense>
+            } 
+          />
+          <Route 
+            path="portfolio" 
+            element={
+              <Suspense fallback={<LoadingSpinner />}>
+                <PortfolioPage />
+              </Suspense>
+            } 
+          />
+          <Route 
+            path="services" 
+            element={
+              <Suspense fallback={<LoadingSpinner />}>
+                <ServicesPage />
+              </Suspense>
+            } 
+          />
+          <Route 
+            path="*" 
+            element={
+              <Suspense fallback={<LoadingSpinner />}>
+                <NotFoundPage />
+              </Suspense>
+            } 
+          />
         </Route>
       </Routes>
     </AnimatePresence>

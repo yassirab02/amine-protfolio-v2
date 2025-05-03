@@ -67,7 +67,7 @@ const featuredImages = [
     width: 1600,
     height: 1067,
   },
-  
+
   {
     src: "https://images.pexels.com/photos/1591373/pexels-photo-1591373.jpeg?auto=compress&cs=tinysrgb&w=1600",
     alt: "Colorful street art",
@@ -84,7 +84,6 @@ const featuredImages = [
     width: 1600,
     height: 1067,
   },
-
 ];
 
 // Services data
@@ -261,8 +260,11 @@ export default function HomePage() {
       </section>
 
       {/* Contact CTA */}
-      <section className="py-20 px-6 bg-gradient-to-b from-gray-50 to-white dark:from-zinc-900 dark:to-black">
-        <div className="container mx-auto text-center">
+      <section className="relative py-20 px-6 bg-gradient-to-b from-gray-50 to-white dark:from-zinc-900 dark:to-black overflow-hidden">
+        {/* Light effect */}
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-2xl h-48 bg-gradient-to-b from-white to-transparent blur-[100px] rounded-full opacity-70 dark:opacity-30 pointer-events-none" />
+
+        <div className="container mx-auto text-center relative z-10">
           <motion.h2
             className="text-3xl md:text-4xl font-serif text-black dark:text-white tracking-wide mb-6"
             initial={{ opacity: 0, y: 20 }}
