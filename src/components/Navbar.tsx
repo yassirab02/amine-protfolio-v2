@@ -30,8 +30,8 @@ export default function Navbar() {
     <nav
       className={`w-full py-6 px-8 flex justify-between items-center fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${
         scrolled
-          ? "bg-gradient-to-r from-white/90 via-white/90 to-white/90 dark:from-zinc-900/90 dark:via-black/90 dark:to-zinc-900/90 backdrop-blur-md shadow-[0_10px_30px_-15px_rgba(0,0,0,0.1)] dark:shadow-[0_10px_30px_-15px_rgba(0,0,0,0.3)]"
-          : "bg-gradient-to-r from-white/30 via-white/30 to-white/30 dark:from-zinc-900/30 dark:via-black/30 dark:to-zinc-900/30 backdrop-blur-sm"
+          ? "bg-gradient-to-r from-zinc-900/90 via-black/90 to-zinc-900/90 backdrop-blur-md shadow-[0_10px_30px_-15px_rgba(0,0,0,0.3)]"
+          : "bg-gradient-to-r from-zinc-900/30 via-black/30 to-zinc-900/30 backdrop-blur-sm"
       }`}
     >
       {/* Left navigation */}
@@ -44,15 +44,15 @@ export default function Navbar() {
 
       {/* Logo - desktop centered */}
       <Link to="/" className="absolute left-1/2 transform -translate-x-1/2 hidden lg:block group">
-        <span className="text-2xl font-serif text-black dark:text-white tracking-wider relative overflow-hidden inline-block px-2">
-          <span className="relative z-10 group-hover:text-zinc-800 dark:group-hover:text-zinc-100 transition-colors duration-300">Amine</span>
-          <span className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-black dark:via-white to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out"></span>
-          <span className="absolute -inset-1 bg-black/5 dark:bg-white/5 rounded-full transform scale-0 group-hover:scale-100 transition-transform duration-300 ease-out"></span>
+        <span className="text-2xl font-serif text-white tracking-wider relative overflow-hidden inline-block px-2">
+          <span className="relative z-10 group-hover:text-zinc-100 transition-colors duration-300">Amine</span>
+          <span className="absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white to-transparent transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-out"></span>
+          <span className="absolute -inset-1 bg-white/5 rounded-full transform scale-0 group-hover:scale-100 transition-transform duration-300 ease-out"></span>
         </span>
       </Link>
 
       {/* Mobile logo - left aligned */}
-      <Link to="/" className="text-2xl font-serif text-black dark:text-white tracking-wider lg:hidden">
+      <Link to="/" className="text-2xl font-serif text-white tracking-wider lg:hidden">
         Amine
       </Link>
 
@@ -87,13 +87,13 @@ function NavLink({ to, children, icon, target, rel }: { to: string; children: Re
       rel={rel}
       className={`group relative px-3 py-2 text-sm font-light tracking-wider transition-all duration-500 ${
         isActive 
-          ? "text-black dark:text-white font-medium" 
-          : "text-black/80 dark:text-white/80 hover:text-black dark:hover:text-white"
+          ? "text-white font-medium" 
+          : "text-white/80 hover:text-white"
       }`}
     >
       {/* Decorative elements */}
-      <span className="absolute -top-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-black/30 dark:bg-white/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100"></span>
-      <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-black/30 dark:bg-white/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100"></span>
+      <span className="absolute -top-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-white/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100"></span>
+      <span className="absolute -bottom-1 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-white/30 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100"></span>
 
       {/* Main content */}
       <span className="relative z-10 flex items-center">
@@ -119,7 +119,7 @@ function NavLink({ to, children, icon, target, rel }: { to: string; children: Re
       </span>
 
       {/* Hover and active effects */}
-      <span className={`absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-black dark:via-white to-transparent transition-transform duration-700 ease-out ${
+      <span className={`absolute bottom-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-white to-transparent transition-transform duration-700 ease-out ${
         isActive 
           ? "scale-x-100" 
           : "scale-x-0 group-hover:scale-x-100"
@@ -127,10 +127,10 @@ function NavLink({ to, children, icon, target, rel }: { to: string; children: Re
       
       {/* Active indicator dot */}
       {isActive && (
-        <span className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-1 h-1 rounded-full bg-black dark:bg-white"></span>
+        <span className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-1 h-1 rounded-full bg-white"></span>
       )}
       
-      <span className={`absolute -inset-1 bg-gradient-to-r from-black/0 via-black/5 to-black/0 dark:from-white/0 dark:via-white/5 dark:to-white/0 rounded-lg transition-all duration-500 ease-out ${
+      <span className={`absolute -inset-1 bg-gradient-to-r from-white/0 via-white/5 to-white/0 rounded-lg transition-all duration-500 ease-out ${
         isActive 
           ? "opacity-100 scale-y-100" 
           : "opacity-0 scale-y-0 group-hover:opacity-100 group-hover:scale-y-100"
@@ -138,8 +138,8 @@ function NavLink({ to, children, icon, target, rel }: { to: string; children: Re
       
       <span className={`absolute inset-0 rounded-lg border transition-all duration-500 ${
         isActive 
-          ? "border-black/10 dark:border-white/10 scale-100 opacity-100" 
-          : "border-black/0 dark:border-white/0 scale-90 opacity-0 group-hover:border-black/10 dark:group-hover:border-white/10 group-hover:scale-100 group-hover:opacity-100"
+          ? "border-white/10 scale-100 opacity-100" 
+          : "border-white/0 scale-90 opacity-0 group-hover:border-white/10 group-hover:scale-100 group-hover:opacity-100"
       }`}></span>
     </Link>
   );
