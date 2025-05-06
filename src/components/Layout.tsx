@@ -38,7 +38,7 @@ export default function Layout() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-white dark:bg-black text-black dark:text-white flex flex-col transition-colors duration-300">
+    <div className="min-h-screen bg-black text-white flex flex-col transition-colors duration-300">
       <Navbar />
       <motion.main 
         className="flex-grow"
