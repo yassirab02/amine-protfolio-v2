@@ -172,7 +172,7 @@ export default function HomePage() {
   )
 
   return (
-    <div className="min-h-screen bg-white dark:bg-black">
+    <div className="min-h-screen bg-black">
       <Hero />
 
       {/* Featured Videos */}
@@ -184,12 +184,12 @@ export default function HomePage() {
             animate={videosInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.3 }}
           >
-            <h2 className="text-3xl md:text-4xl font-serif text-black dark:text-white tracking-wide">
+            <h2 className="text-3xl md:text-4xl font-serif text-white tracking-wide">
               Latest Projects
             </h2>
-            <div className="relative mt-4 h-px bg-gradient-to-r from-transparent via-black/20 dark:via-white/20 to-transparent mx-auto">
+            <div className="relative mt-4 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent mx-auto">
               <motion.div
-                className="absolute top-0 left-0 h-full bg-gradient-to-r from-transparent via-black dark:via-white to-transparent"
+                className="absolute top-0 left-0 h-full bg-gradient-to-r from-transparent via-white to-transparent"
                 style={{ width: videoLineWidth }}
               />
             </div>
@@ -211,7 +211,7 @@ export default function HomePage() {
           >
             <Link
               to="/motion"
-              className="inline-flex items-center py-4 px-8 bg-black/10 hover:bg-black/15 dark:bg-white/10 dark:hover:bg-white/15 text-black dark:text-white rounded-lg transition-colors duration-300 font-light tracking-wide border border-black/10 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20 group"
+              className="inline-flex items-center py-4 px-8  bg-white/10 hover:bg-white/15 text-white rounded-lg transition-colors duration-300 font-light tracking-wide border border-white/10 hover:border-white/20 group"
             >
               <span>View All Videos</span>
               <ArrowRight className="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" />
@@ -221,7 +221,7 @@ export default function HomePage() {
       </section>
 
       {/* Featured Work */}
-      <section className="py-20 px-6 bg-gray-50 dark:bg-zinc-950" ref={photosRef}>
+      <section className="py-20 px-6 bg-zinc-950" ref={photosRef}>
         <div className="container mx-auto">
           <motion.div
             className="text-center mb-16"
@@ -229,12 +229,12 @@ export default function HomePage() {
             animate={photosInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.3 }}
           >
-            <h2 className="text-3xl md:text-4xl font-serif text-black dark:text-white tracking-wide">
+            <h2 className="text-3xl md:text-4xl font-serif text-white tracking-wide">
               Featured Photography
             </h2>
-            <div className="relative mt-4 h-px bg-gradient-to-r from-transparent via-black/20 dark:via-white/20 to-transparent mx-auto">
+            <div className="relative mt-4 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent mx-auto">
               <motion.div
-                className="absolute top-0 left-0 h-full bg-gradient-to-r from-transparent via-black dark:via-white to-transparent"
+                className="absolute top-0 left-0 h-full bg-gradient-to-r from-transparent via-white to-transparent"
                 style={{ width: photoLineWidth }}
               />
             </div>
@@ -256,7 +256,7 @@ export default function HomePage() {
           >
             <Link
               to="/stills"
-              className="inline-flex items-center py-4 px-8 bg-black/10 hover:bg-black/15 dark:bg-white/10 dark:hover:bg-white/15 text-black dark:text-white rounded-lg transition-colors duration-300 font-light tracking-wide border border-black/10 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20 group"
+              className="inline-flex items-center py-4 px-8 bg-white/10 hover:bg-white/15 text-white rounded-lg transition-colors duration-300 font-light tracking-wide border border-white/10 hover:border-white/20 group"
             >
               <span>View All Photography</span>
               <ArrowRight className="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" />
@@ -274,10 +274,10 @@ export default function HomePage() {
             animate={servicesInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.3 }}
           >
-            <h2 className="text-3xl md:text-4xl font-serif text-black dark:text-white tracking-wide">Services</h2>
-            <div className="relative mt-4 h-px bg-gradient-to-r from-transparent via-black/20 dark:via-white/20 to-transparent mx-auto mb-6">
+            <h2 className="text-3xl md:text-4xl font-serif text-white tracking-wide">Services</h2>
+            <div className="relative mt-4 h-px via-white/20 to-transparent mx-auto mb-6">
               <motion.div
-                className="absolute top-0 left-0 h-full bg-gradient-to-r from-transparent via-black dark:via-white to-transparent"
+                className="absolute top-0 left-0 h-full via-white to-transparent"
                 style={{ width: servicesLineWidth }}
               />
             </div>
@@ -291,20 +291,20 @@ export default function HomePage() {
               animate={servicesInView ? "visible" : "hidden"}
               transition={{ duration: 0.3, delay: 0.1 }}
             >
-              <h3 className="text-2xl font-serif text-black dark:text-white mb-8">Film & Video</h3>
+              <h3 className="text-2xl font-serif text-white mb-8">Film & Video</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {filmServices.map((service, index) => (
                   <motion.div
                     key={index}
                     variants={itemVariants}
-                    className="bg-gray-50 dark:bg-zinc-900/50 p-6 rounded-xl border border-black/5 dark:border-white/5 hover:shadow-lg transition-shadow duration-300"
+                    className="bg-zinc-900/50 p-6 rounded-xl border border-white/5 hover:shadow-lg transition-shadow duration-300"
                     whileHover={{
                       y: -5,
                       transition: { duration: 0.2 },
                     }}
                   >
-                    <h4 className="text-lg font-medium text-black dark:text-white mb-2">{service.title}</h4>
-                    <p className="text-black/70 dark:text-white/70 text-sm">{service.description}</p>
+                    <h4 className="text-lg font-medium text-white mb-2">{service.title}</h4>
+                    <p className="text-white/70 text-sm">{service.description}</p>
                   </motion.div>
                 ))}
               </div>
@@ -317,20 +317,20 @@ export default function HomePage() {
               animate={servicesInView ? "visible" : "hidden"}
               transition={{ duration: 0.3, delay: 0.2 }}
             >
-              <h3 className="text-2xl font-serif text-black dark:text-white mb-8">Photography</h3>
+              <h3 className="text-2xl font-serif text-white mb-8">Photography</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {photoServices.map((service, index) => (
                   <motion.div
                     key={index}
                     variants={itemVariants}
-                    className="bg-gray-50 dark:bg-zinc-900/50 p-6 rounded-xl border border-black/5 dark:border-white/5 hover:shadow-lg transition-shadow duration-300"
+                    className="bg-zinc-900/50 p-6 rounded-xl border border-white/5 hover:shadow-lg transition-shadow duration-300"
                     whileHover={{
                       y: -5,
                       transition: { duration: 0.2 },
                     }}
                   >
-                    <h4 className="text-lg font-medium text-black dark:text-white mb-2">{service.title}</h4>
-                    <p className="text-black/70 dark:text-white/70 text-sm">{service.description}</p>
+                    <h4 className="text-lg font-medium text-white mb-2">{service.title}</h4>
+                    <p className="text-white/70 text-sm">{service.description}</p>
                   </motion.div>
                 ))}
               </div>
@@ -341,18 +341,18 @@ export default function HomePage() {
 
       {/* Contact CTA */}
       <section
-        className="relative py-20 px-6 bg-gradient-to-b from-gray-50 to-white dark:from-zinc-900 dark:to-black overflow-hidden"
+        className="relative py-20 px-6 from-zinc-900 to-black overflow-hidden"
         ref={ctaRef}
       >
         {/* Light effect with parallax */}
         <motion.div
-          className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-2xl h-48 bg-gradient-to-b from-white to-transparent blur-[100px] rounded-full opacity-70 dark:opacity-30 pointer-events-none"
+          className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-2xl h-48 bg-gradient-to-b from-white to-transparent blur-[100px] rounded-full opacity-30 pointer-events-none"
           style={{ y }}
         />
 
         <div className="container mx-auto text-center relative z-10">
           <motion.h2
-            className="text-3xl md:text-4xl font-serif text-black dark:text-white tracking-wide mb-6"
+            className="text-3xl md:text-4xl font-serif text-white tracking-wide mb-6"
             initial={{ opacity: 0, y: 20 }}
             animate={ctaInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.3 }}
@@ -361,7 +361,7 @@ export default function HomePage() {
           </motion.h2>
 
           <motion.p
-            className="text-black/80 dark:text-white/80 max-w-2xl mx-auto mb-10"
+            className="text-white/80 max-w-2xl mx-auto mb-10"
             initial={{ opacity: 0, y: 20 }}
             animate={ctaInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.3, delay: 0.1 }}
@@ -378,7 +378,7 @@ export default function HomePage() {
           >
             <Link
               to="/contact"
-              className="inline-flex items-center py-4 px-8 bg-black/10 hover:bg-black/15 dark:bg-white/10 dark:hover:bg-white/15 text-black dark:text-white rounded-lg transition-colors duration-300 font-light tracking-wide border border-black/10 dark:border-white/10 hover:border-black/20 dark:hover:border-white/20 group"
+              className="inline-flex items-center py-4 px-8 bg-white/10 hover:bg-white/15 text-white rounded-lg transition-colors duration-300 font-light tracking-wide border border-white/10 hover:border-black/20 hover:border-white/20 group"
             >
               <span>GET IN TOUCH</span>
               <ArrowRight className="ml-2 w-4 h-4 transform group-hover:translate-x-1 transition-transform duration-300" />
