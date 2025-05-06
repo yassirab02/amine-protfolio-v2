@@ -1,37 +1,37 @@
-import { motion } from "framer-motion";
-import Hero from "../components/Hero";
-import ImageGallery from "../components/ImageGallery";
-import VideoGallery from "../components/VideoGallery";
-import { Link } from "react-router-dom";
-import { ArrowRight } from "lucide-react";
+"use client"
+
+import { motion, useScroll, useTransform, useInView } from "framer-motion"
+import { useRef } from "react"
+import Hero from "../components/Hero"
+import ImageGallery from "../components/ImageGallery"
+import VideoGallery from "../components/VideoGallery"
+import { Link } from "react-router-dom"
+import { ArrowRight } from "lucide-react"
 
 // Featured videos
 const featuredVideos = [
   {
-    thumbnail:
-      "https://images.pexels.com/photos/3062541/pexels-photo-3062541.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    thumbnail: "https://images.pexels.com/photos/3062541/pexels-photo-3062541.jpeg?auto=compress&cs=tinysrgb&w=1600",
     videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
     title: "Luxury Restaurant Promo",
     description: "Cinematic showcase of fine dining experience",
     duration: "2:30",
   },
   {
-    thumbnail:
-      "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    thumbnail: "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1600",
     videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
     title: "Real Estate Showcase",
     description: "Modern property cinematography",
     duration: "3:15",
   },
   {
-    thumbnail:
-      "https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    thumbnail: "https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg?auto=compress&cs=tinysrgb&w=1600",
     videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
     title: "Sports Documentary",
     description: "Behind the scenes with athletes",
     duration: "4:45",
   },
-];
+]
 
 // Featured work images
 const featuredImages = [
@@ -84,7 +84,7 @@ const featuredImages = [
     width: 1600,
     height: 1067,
   },
-];
+]
 
 // Services data
 const filmServices = [
@@ -98,7 +98,7 @@ const filmServices = [
   { title: "Products", description: "Professional product demonstrations" },
   { title: "Brands", description: "Brand story and commercial production" },
   { title: "Short Film", description: "Narrative and documentary shorts" },
-];
+]
 
 const photoServices = [
   { title: "Wedding", description: "Capturing your special moments" },
@@ -113,35 +113,101 @@ const photoServices = [
   { title: "Sports", description: "Action and sports photography" },
   { title: "Couples", description: "Engagement and couple sessions" },
   { title: "Brands", description: "Brand and product photography" },
-];
+]
+
+// Animation variants for staggered children
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.05,
+    },
+  },
+}
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.3 },
+  },
+}
 
 export default function HomePage() {
+  // Refs for scroll-triggered animations
+  const videosRef = useRef(null)
+  const photosRef = useRef(null)
+  const servicesRef = useRef(null)
+  const ctaRef = useRef(null)
+
+  // Check if sections are in view
+  const videosInView = useInView(videosRef, { once: false, amount: 0.1 })
+  const photosInView = useInView(photosRef, { once: false, amount: 0.1 })
+  const servicesInView = useInView(servicesRef, { once: false, amount: 0.1 })
+  const ctaInView = useInView(ctaRef, { once: false, amount: 0.2 })
+
+  // Parallax effect for CTA section
+  const { scrollYProgress } = useScroll()
+  const y = useTransform(scrollYProgress, [0, 1], [0, -100])
+
+  // Scroll progress for horizontal lines
+  const videoLineWidth = useTransform(
+    useScroll({ target: videosRef, offset: ["start end", "end end"] }).scrollYProgress,
+    [0, 1],
+    ["0%", "100%"],
+  )
+
+  const photoLineWidth = useTransform(
+    useScroll({ target: photosRef, offset: ["start end", "end end"] }).scrollYProgress,
+    [0, 1],
+    ["0%", "100%"],
+  )
+
+  const servicesLineWidth = useTransform(
+    useScroll({ target: servicesRef, offset: ["start end", "end end"] }).scrollYProgress,
+    [0, 1],
+    ["0%", "100%"],
+  )
+
   return (
     <div className="min-h-screen bg-white dark:bg-black">
       <Hero />
 
       {/* Featured Videos */}
-      <section className="py-20 px-6">
+      <section className="py-20 px-6" ref={videosRef}>
         <div className="container mx-auto">
           <motion.div
             className="text-center mb-16"
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            animate={videosInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.3 }}
           >
             <h2 className="text-3xl md:text-4xl font-serif text-black dark:text-white tracking-wide">
               Latest Projects
             </h2>
-            <div className="mt-4 w-24 h-px bg-gradient-to-r from-transparent via-black dark:via-white to-transparent mx-auto"></div>
+            <div className="relative mt-4 h-px bg-gradient-to-r from-transparent via-black/20 dark:via-white/20 to-transparent mx-auto">
+              <motion.div
+                className="absolute top-0 left-0 h-full bg-gradient-to-r from-transparent via-black dark:via-white to-transparent"
+                style={{ width: videoLineWidth }}
+              />
+            </div>
           </motion.div>
 
-          <VideoGallery videos={featuredVideos} />
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={videosInView ? { opacity: 1 } : { opacity: 0 }}
+            transition={{ duration: 0.4 }}
+          >
+            <VideoGallery videos={featuredVideos} />
+          </motion.div>
 
           <motion.div
             className="text-center mt-12"
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            animate={videosInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.3, delay: 0.1 }}
           >
             <Link
               to="/motion"
@@ -155,27 +221,38 @@ export default function HomePage() {
       </section>
 
       {/* Featured Work */}
-      <section className="py-20 px-6 bg-gray-50 dark:bg-zinc-950">
+      <section className="py-20 px-6 bg-gray-50 dark:bg-zinc-950" ref={photosRef}>
         <div className="container mx-auto">
           <motion.div
             className="text-center mb-16"
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            animate={photosInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.3 }}
           >
             <h2 className="text-3xl md:text-4xl font-serif text-black dark:text-white tracking-wide">
               Featured Photography
             </h2>
-            <div className="mt-4 w-24 h-px bg-gradient-to-r from-transparent via-black dark:via-white to-transparent mx-auto"></div>
+            <div className="relative mt-4 h-px bg-gradient-to-r from-transparent via-black/20 dark:via-white/20 to-transparent mx-auto">
+              <motion.div
+                className="absolute top-0 left-0 h-full bg-gradient-to-r from-transparent via-black dark:via-white to-transparent"
+                style={{ width: photoLineWidth }}
+              />
+            </div>
           </motion.div>
 
-          <ImageGallery images={featuredImages} columns={3} />
+          <motion.div
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={photosInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.98 }}
+            transition={{ duration: 0.4 }}
+          >
+            <ImageGallery images={featuredImages} columns={3} />
+          </motion.div>
 
           <motion.div
             className="text-center mt-12"
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            animate={photosInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.3, delay: 0.1 }}
           >
             <Link
               to="/stills"
@@ -189,69 +266,72 @@ export default function HomePage() {
       </section>
 
       {/* Services */}
-      <section className="py-24 px-6">
+      <section className="py-6 px-6" ref={servicesRef}>
         <div className="container mx-auto">
           <motion.div
             className="text-center mb-16"
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            animate={servicesInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.3 }}
           >
-            <h2 className="text-3xl md:text-4xl font-serif text-black dark:text-white tracking-wide">
-              Services
-            </h2>
-            <div className="mt-4 w-24 h-px bg-gradient-to-r from-transparent via-black dark:via-white to-transparent mx-auto mb-6"></div>
+            <h2 className="text-3xl md:text-4xl font-serif text-black dark:text-white tracking-wide">Services</h2>
+            <div className="relative mt-4 h-px bg-gradient-to-r from-transparent via-black/20 dark:via-white/20 to-transparent mx-auto mb-6">
+              <motion.div
+                className="absolute top-0 left-0 h-full bg-gradient-to-r from-transparent via-black dark:via-white to-transparent"
+                style={{ width: servicesLineWidth }}
+              />
+            </div>
           </motion.div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             {/* Film Services */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.2 }}
+              variants={containerVariants}
+              initial="hidden"
+              animate={servicesInView ? "visible" : "hidden"}
+              transition={{ duration: 0.3, delay: 0.1 }}
             >
-              <h3 className="text-2xl font-serif text-black dark:text-white mb-8">
-                Film & Video
-              </h3>
+              <h3 className="text-2xl font-serif text-black dark:text-white mb-8">Film & Video</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {filmServices.map((service, index) => (
-                  <div
+                  <motion.div
                     key={index}
-                    className="bg-gray-50 dark:bg-zinc-900/50 p-6 rounded-xl border border-black/5 dark:border-white/5"
+                    variants={itemVariants}
+                    className="bg-gray-50 dark:bg-zinc-900/50 p-6 rounded-xl border border-black/5 dark:border-white/5 hover:shadow-lg transition-shadow duration-300"
+                    whileHover={{
+                      y: -5,
+                      transition: { duration: 0.2 },
+                    }}
                   >
-                    <h4 className="text-lg font-medium text-black dark:text-white mb-2">
-                      {service.title}
-                    </h4>
-                    <p className="text-black/70 dark:text-white/70 text-sm">
-                      {service.description}
-                    </p>
-                  </div>
+                    <h4 className="text-lg font-medium text-black dark:text-white mb-2">{service.title}</h4>
+                    <p className="text-black/70 dark:text-white/70 text-sm">{service.description}</p>
+                  </motion.div>
                 ))}
               </div>
             </motion.div>
 
             {/* Photo Services */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
+              variants={containerVariants}
+              initial="hidden"
+              animate={servicesInView ? "visible" : "hidden"}
+              transition={{ duration: 0.3, delay: 0.2 }}
             >
-              <h3 className="text-2xl font-serif text-black dark:text-white mb-8">
-                Photography
-              </h3>
+              <h3 className="text-2xl font-serif text-black dark:text-white mb-8">Photography</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {photoServices.map((service, index) => (
-                  <div
+                  <motion.div
                     key={index}
-                    className="bg-gray-50 dark:bg-zinc-900/50 p-6 rounded-xl border border-black/5 dark:border-white/5"
+                    variants={itemVariants}
+                    className="bg-gray-50 dark:bg-zinc-900/50 p-6 rounded-xl border border-black/5 dark:border-white/5 hover:shadow-lg transition-shadow duration-300"
+                    whileHover={{
+                      y: -5,
+                      transition: { duration: 0.2 },
+                    }}
                   >
-                    <h4 className="text-lg font-medium text-black dark:text-white mb-2">
-                      {service.title}
-                    </h4>
-                    <p className="text-black/70 dark:text-white/70 text-sm">
-                      {service.description}
-                    </p>
-                  </div>
+                    <h4 className="text-lg font-medium text-black dark:text-white mb-2">{service.title}</h4>
+                    <p className="text-black/70 dark:text-white/70 text-sm">{service.description}</p>
+                  </motion.div>
                 ))}
               </div>
             </motion.div>
@@ -260,16 +340,22 @@ export default function HomePage() {
       </section>
 
       {/* Contact CTA */}
-      <section className="relative py-20 px-6 bg-gradient-to-b from-gray-50 to-white dark:from-zinc-900 dark:to-black overflow-hidden">
-        {/* Light effect */}
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-2xl h-48 bg-gradient-to-b from-white to-transparent blur-[100px] rounded-full opacity-70 dark:opacity-30 pointer-events-none" />
+      <section
+        className="relative py-20 px-6 bg-gradient-to-b from-gray-50 to-white dark:from-zinc-900 dark:to-black overflow-hidden"
+        ref={ctaRef}
+      >
+        {/* Light effect with parallax */}
+        <motion.div
+          className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-2xl h-48 bg-gradient-to-b from-white to-transparent blur-[100px] rounded-full opacity-70 dark:opacity-30 pointer-events-none"
+          style={{ y }}
+        />
 
         <div className="container mx-auto text-center relative z-10">
           <motion.h2
             className="text-3xl md:text-4xl font-serif text-black dark:text-white tracking-wide mb-6"
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            animate={ctaInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.3 }}
           >
             Ready to Collaborate?
           </motion.h2>
@@ -277,17 +363,18 @@ export default function HomePage() {
           <motion.p
             className="text-black/80 dark:text-white/80 max-w-2xl mx-auto mb-10"
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            animate={ctaInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+            transition={{ duration: 0.3, delay: 0.1 }}
           >
-            Let's create something beautiful together. Reach out to discuss your
-            project or book a session.
+            Let's create something beautiful together. Reach out to discuss your project or book a session.
           </motion.p>
 
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={ctaInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.95 }}
+            transition={{ duration: 0.3, delay: 0.2 }}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.98 }}
           >
             <Link
               to="/contact"
@@ -300,5 +387,5 @@ export default function HomePage() {
         </div>
       </section>
     </div>
-  );
+  )
 }
