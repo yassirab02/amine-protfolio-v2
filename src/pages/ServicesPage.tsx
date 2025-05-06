@@ -108,7 +108,7 @@ const photoServices = [
 
 export default function ServicesPage() {
   return (
-    <div className="min-h-screen bg-white dark:bg-black">
+    <div className="min-h-screen bg-black">
       <PageHeader 
         title="Services" 
         subtitle="Professional photography and videography services for all your creative needs."
@@ -124,15 +124,15 @@ export default function ServicesPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <Film className="w-8 h-8 text-black dark:text-white" />
-            <h2 className="text-3xl font-serif text-black dark:text-white">Film & Video Services</h2>
+            <Film className="w-8 h-8 text-white" />
+            <h2 className="text-3xl font-serif text-white">Film & Video Services</h2>
           </motion.div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filmServices.map((service, index) => (
               <motion.div
                 key={index}
-                className="group relative overflow-hidden rounded-2xl bg-gray-50 dark:bg-zinc-900"
+                className="group relative overflow-hidden rounded-2xl bg-zinc-900"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
@@ -145,11 +145,11 @@ export default function ServicesPage() {
                   />
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-serif text-black dark:text-white mb-2">{service.title}</h3>
-                  <p className="text-black/70 dark:text-white/70 mb-4">{service.description}</p>
+                  <h3 className="text-xl font-serif text-white mb-2">{service.title}</h3>
+                  <p className="text-white/70 mb-4">{service.description}</p>
                   <ul className="space-y-2">
                     {service.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="text-black/60 dark:text-white/60 text-sm flex items-center">
+                      <li key={featureIndex} className="text-white/60 text-sm flex items-center">
                         <ArrowRight className="w-4 h-4 mr-2" />
                         {feature}
                       </li>
@@ -163,7 +163,7 @@ export default function ServicesPage() {
       </section>
       
       {/* Photography Services */}
-      <section className="py-20 px-6 bg-gray-50 dark:bg-zinc-950">
+      <section className="py-20 px-6 bg-zinc-950">
         <div className="container mx-auto">
           <motion.div 
             className="flex items-center gap-4 mb-12"
@@ -171,15 +171,15 @@ export default function ServicesPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <Camera className="w-8 h-8 text-black dark:text-white" />
-            <h2 className="text-3xl font-serif text-black dark:text-white">Photography Services</h2>
+            <Camera className="w-8 h-8 text-white" />
+            <h2 className="text-3xl font-serif text-white">Photography Services</h2>
           </motion.div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {photoServices.map((service, index) => (
               <motion.div
                 key={index}
-                className="group relative overflow-hidden rounded-2xl bg-white dark:bg-black"
+                className="group relative overflow-hidden rounded-2xl bg-black"
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: index * 0.1 }}
@@ -192,11 +192,11 @@ export default function ServicesPage() {
                   />
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-serif text-black dark:text-white mb-2">{service.title}</h3>
-                  <p className="text-black/70 dark:text-white/70 mb-4">{service.description}</p>
+                  <h3 className="text-xl font-serif text-white mb-2">{service.title}</h3>
+                  <p className="text-white/70 mb-4">{service.description}</p>
                   <ul className="space-y-2">
                     {service.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="text-black/60 dark:text-white/60 text-sm flex items-center">
+                      <li key={featureIndex} className="text-white/60 text-sm flex items-center">
                         <ArrowRight className="w-4 h-4 mr-2" />
                         {feature}
                       </li>
@@ -210,7 +210,7 @@ export default function ServicesPage() {
       </section>
       
       {/* Contact CTA */}
-      <section className="py-20 px-6 bg-gradient-to-b from-gray-50 to-white dark:from-zinc-900 dark:to-black">
+      <section className="py-20 px-6 bg-gradient-to-b from-zinc-900 to-black">
         <div className="container mx-auto text-center">
           <motion.div
             className="max-w-3xl mx-auto"
@@ -218,13 +218,13 @@ export default function ServicesPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-4xl font-serif text-black dark:text-white mb-6">Ready to Start Your Project?</h2>
-            <p className="text-black/70 dark:text-white/70 mb-10">
+            <h2 className="text-3xl md:text-4xl font-serif text-white mb-6">Ready to Start Your Project?</h2>
+            <p className="text-white/70 mb-10">
               Let's discuss your vision and create something extraordinary together. Contact us for a personalized quote.
             </p>
             <Link 
               to="/contact" 
-              className="inline-flex items-center py-4 px-8 bg-black dark:bg-white text-white dark:text-black rounded-lg transition-all duration-300 hover:scale-105"
+              className="inline-flex items-center py-4 px-8 bg-white text-black rounded-lg transition-all duration-300 hover:scale-105"
             >
               <span>Get in Touch</span>
               <ArrowRight className="ml-2 w-4 h-4" />
