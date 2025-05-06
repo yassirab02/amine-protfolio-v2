@@ -266,7 +266,7 @@ export default function HomePage() {
       </section>
 
       {/* Services */}
-      <section className="py-6 px-6" ref={servicesRef}>
+      <section className="py-16 px-6" ref={servicesRef}>
         <div className="container mx-auto">
           <motion.div
             className="text-center mb-16"
