@@ -8,28 +8,39 @@ import VideoGallery from "../components/VideoGallery"
 import { Link } from "react-router-dom"
 import { ArrowRight } from "lucide-react"
 
+
+import video1 from '../assets/media/home/video/video1.mp4';
+import video2 from '../assets/media/home/video/video2.mp4';
+
+import pic1 from '../assets/media/home/pic/pic1.jpg';
+import pic2 from '../assets/media/home/pic/pic2.jpg';
+import pic3 from '../assets/media/home/pic/pic3.jpg';
+import pic4 from '../assets/media/home/pic/pic4.jpg';
+import pic5 from '../assets/media/home/pic/pic5.jpg';
+import pic6 from '../assets/media/home/pic/pic5.jpg';
+
 // Featured videos
 const featuredVideos = [
   {
-    thumbnail: "/assets/media/home/video/video1.mp4",
-    poster: "/assets/media/home/video/poster1.jpg", // Add a poster image if available
-    videoUrl: "/assets/media/home/video/video1.mp4",
+    thumbnail: "video1",
+    poster: pic1, // Add a poster image if available
+    videoUrl: video1,
     title: "Luxury Restaurant Promo",
     description: "Cinematic showcase of fine dining experience",
     duration: "2:30",
   },
   {
-    thumbnail: "/assets/media/home/video/video2.mp4",
-    poster: "/assets/media/home/video/poster2.jpg", // Add a poster image if available
-    videoUrl:  "/assets/media/home/video/video2.mp4",
+    thumbnail: "video2",
+    poster: pic2, // Add a poster image if available
+    videoUrl: video2,
     title: "Real Estate Showcase",
     description: "Modern property cinematography",
     duration: "3:15",
   },
   {
-    thumbnail:  "/assets/media/home/video/video2.mp4",
-    poster:  "/assets/media/home/video/video2.mp4", // Add a poster image if available
-    videoUrl:  "/assets/media/home/video/video2.mp4",
+    thumbnail:  "video3",
+    poster:  pic3, // Add a poster image if available
+    videoUrl:  video1,
     title: "Sports Documentary",
     description: "Behind the scenes with athletes",
     duration: "4:45",
@@ -39,7 +50,7 @@ const featuredVideos = [
 // Featured work images
 const featuredImages = [
   {
-    src: "/assets/media/home/pic/pic1.jpg",
+    src: pic1,
     alt: "Mountain landscape",
     title: "Alpine Heights",
     category: "Landscape",
@@ -47,7 +58,7 @@ const featuredImages = [
     height: 1067,
   },
   {
-    src: "/assets/media/home/pic/pic2.jpg",
+    src: pic2,
     alt: "Portrait of woman",
     title: "Serene Portrait",
     category: "Portrait",
@@ -55,7 +66,7 @@ const featuredImages = [
     height: 2400,
   },
   {
-    src: "/assets/media/home/pic/pic3.jpg",
+    src: pic3,
     alt: "Urban architecture",
     title: "Urban Geometry",
     category: "Architecture",
@@ -63,7 +74,7 @@ const featuredImages = [
     height: 2000,
   },
   {
-    src: "/assets/media/home/pic/pic4.jpg",
+    src: pic4,
     alt: "Tropical beach",
     title: "Island Paradise",
     category: "Travel",
@@ -72,7 +83,7 @@ const featuredImages = [
   },
 
   {
-    src: "/assets/media/home/pic/pic5.jpg",
+    src: pic5,
     alt: "Colorful street art",
     title: "Urban Canvas",
     category: "Street Art",
@@ -80,7 +91,7 @@ const featuredImages = [
     height: 2400,
   },
   {
-    src: "/assets/media/home/pic/pic6.jpg",
+    src: pic6,
     alt: "Aerial mountain view",
     title: "Peak Perspective",
     category: "Aerial",
