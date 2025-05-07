@@ -11,21 +11,21 @@ import { ArrowRight } from "lucide-react"
 // Featured videos
 const featuredVideos = [
   {
-    thumbnail: "https://images.pexels.com/photos/3062541/pexels-photo-3062541.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    thumbnail: "/assets/media/home/video/video1.mp4",
     videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
     title: "Luxury Restaurant Promo",
     description: "Cinematic showcase of fine dining experience",
     duration: "2:30",
   },
   {
-    thumbnail: "https://images.pexels.com/photos/1571460/pexels-photo-1571460.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    thumbnail: "/assets/media/home/video/video2.mp4",
     videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
     title: "Real Estate Showcase",
     description: "Modern property cinematography",
     duration: "3:15",
   },
   {
-    thumbnail: "https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    thumbnail: "/assets/media/home/video/video3.mp4",
     videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
     title: "Sports Documentary",
     description: "Behind the scenes with athletes",
@@ -36,7 +36,7 @@ const featuredVideos = [
 // Featured work images
 const featuredImages = [
   {
-    src: "https://images.pexels.com/photos/1252983/pexels-photo-1252983.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    src: "/assets/media/home/pic/pic1.jpg",
     alt: "Mountain landscape",
     title: "Alpine Heights",
     category: "Landscape",
@@ -44,7 +44,7 @@ const featuredImages = [
     height: 1067,
   },
   {
-    src: "https://images.pexels.com/photos/2253916/pexels-photo-2253916.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    src:  "/assets/media/home/pic/pic2.jpg",
     alt: "Portrait of woman",
     title: "Serene Portrait",
     category: "Portrait",
@@ -52,7 +52,7 @@ const featuredImages = [
     height: 2400,
   },
   {
-    src: "https://images.pexels.com/photos/2387418/pexels-photo-2387418.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    src:  "/assets/media/home/pic/pic3.jpg",
     alt: "Urban architecture",
     title: "Urban Geometry",
     category: "Architecture",
@@ -60,7 +60,7 @@ const featuredImages = [
     height: 2000,
   },
   {
-    src: "https://images.pexels.com/photos/3274903/pexels-photo-3274903.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    src:  "/assets/media/home/pic/pic4.jpg",
     alt: "Tropical beach",
     title: "Island Paradise",
     category: "Travel",
@@ -69,7 +69,7 @@ const featuredImages = [
   },
 
   {
-    src: "https://images.pexels.com/photos/1591373/pexels-photo-1591373.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    src:  "/assets/media/home/pic/pic5.jpg",
     alt: "Colorful street art",
     title: "Urban Canvas",
     category: "Street Art",
@@ -77,7 +77,7 @@ const featuredImages = [
     height: 2400,
   },
   {
-    src: "https://images.pexels.com/photos/3225517/pexels-photo-3225517.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    src:  "/assets/media/home/pic/pic6.jpg",
     alt: "Aerial mountain view",
     title: "Peak Perspective",
     category: "Aerial",
