@@ -1,5 +1,8 @@
 import { motion } from 'framer-motion';
 
+import hero from '../assets/me.png';
+
+
 export default function Hero() {
   return (
     <div className="container mx-auto px-4 pt-8 md:pt-24 pb-8 md:pb-12 mt-14 md:mt-0">
@@ -7,7 +10,7 @@ export default function Hero() {
         {/* Image Container */}
         <div className="absolute inset-0">
           <img
-            src="/assets/me.png"
+            src= {hero}
             alt="main picture"
             className="object-cover w-full h-full rounded-2xl md:rounded-3xl object-center"
           />
