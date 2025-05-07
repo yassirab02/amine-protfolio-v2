@@ -12,6 +12,7 @@ import { ArrowRight } from "lucide-react"
 const featuredVideos = [
   {
     thumbnail: "/assets/media/home/video/video1.mp4",
+    poster: "/assets/media/home/video/poster1.jpg", // Add a poster image if available
     videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
     title: "Luxury Restaurant Promo",
     description: "Cinematic showcase of fine dining experience",
@@ -19,6 +20,7 @@ const featuredVideos = [
   },
   {
     thumbnail: "/assets/media/home/video/video2.mp4",
+    poster: "/assets/media/home/video/poster2.jpg", // Add a poster image if available
     videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
     title: "Real Estate Showcase",
     description: "Modern property cinematography",
@@ -26,6 +28,7 @@ const featuredVideos = [
   },
   {
     thumbnail: "/assets/media/home/video/video3.mp4",
+    poster: "/assets/media/home/video/poster3.jpg", // Add a poster image if available
     videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
     title: "Sports Documentary",
     description: "Behind the scenes with athletes",
@@ -44,7 +47,7 @@ const featuredImages = [
     height: 1067,
   },
   {
-    src:  "/assets/media/home/pic/pic2.jpg",
+    src: "/assets/media/home/pic/pic2.jpg",
     alt: "Portrait of woman",
     title: "Serene Portrait",
     category: "Portrait",
@@ -52,7 +55,7 @@ const featuredImages = [
     height: 2400,
   },
   {
-    src:  "/assets/media/home/pic/pic3.jpg",
+    src: "/assets/media/home/pic/pic3.jpg",
     alt: "Urban architecture",
     title: "Urban Geometry",
     category: "Architecture",
@@ -60,7 +63,7 @@ const featuredImages = [
     height: 2000,
   },
   {
-    src:  "/assets/media/home/pic/pic4.jpg",
+    src: "/assets/media/home/pic/pic4.jpg",
     alt: "Tropical beach",
     title: "Island Paradise",
     category: "Travel",
@@ -69,7 +72,7 @@ const featuredImages = [
   },
 
   {
-    src:  "/assets/media/home/pic/pic5.jpg",
+    src: "/assets/media/home/pic/pic5.jpg",
     alt: "Colorful street art",
     title: "Urban Canvas",
     category: "Street Art",
@@ -77,7 +80,7 @@ const featuredImages = [
     height: 2400,
   },
   {
-    src:  "/assets/media/home/pic/pic6.jpg",
+    src: "/assets/media/home/pic/pic6.jpg",
     alt: "Aerial mountain view",
     title: "Peak Perspective",
     category: "Aerial",
@@ -184,9 +187,7 @@ export default function HomePage() {
             animate={videosInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.3 }}
           >
-            <h2 className="text-3xl md:text-4xl font-serif text-white tracking-wide">
-              Latest Projects
-            </h2>
+            <h2 className="text-3xl md:text-4xl font-serif text-white tracking-wide">Latest Projects</h2>
             <div className="relative mt-4 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent mx-auto">
               <motion.div
                 className="absolute top-0 left-0 h-full bg-gradient-to-r from-transparent via-white to-transparent"
@@ -229,9 +230,7 @@ export default function HomePage() {
             animate={photosInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.3 }}
           >
-            <h2 className="text-3xl md:text-4xl font-serif text-white tracking-wide">
-              Featured Photography
-            </h2>
+            <h2 className="text-3xl md:text-4xl font-serif text-white tracking-wide">Featured Photography</h2>
             <div className="relative mt-4 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent mx-auto">
               <motion.div
                 className="absolute top-0 left-0 h-full bg-gradient-to-r from-transparent via-white to-transparent"
@@ -340,10 +339,7 @@ export default function HomePage() {
       </section>
 
       {/* Contact CTA */}
-      <section
-        className="relative py-20 px-6 from-zinc-900 to-black overflow-hidden"
-        ref={ctaRef}
-      >
+      <section className="relative py-20 px-6 from-zinc-900 to-black overflow-hidden" ref={ctaRef}>
         {/* Light effect with parallax */}
         <motion.div
           className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-2xl h-48 bg-gradient-to-b from-white to-transparent blur-[100px] rounded-full opacity-30 pointer-events-none"
