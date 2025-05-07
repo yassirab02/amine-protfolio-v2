@@ -13,7 +13,7 @@ const featuredVideos = [
   {
     thumbnail: "/assets/media/home/video/video1.mp4",
     poster: "/assets/media/home/video/poster1.jpg", // Add a poster image if available
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    videoUrl: "/assets/media/home/video/video1.mp4",
     title: "Luxury Restaurant Promo",
     description: "Cinematic showcase of fine dining experience",
     duration: "2:30",
@@ -21,15 +21,15 @@ const featuredVideos = [
   {
     thumbnail: "/assets/media/home/video/video2.mp4",
     poster: "/assets/media/home/video/poster2.jpg", // Add a poster image if available
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    videoUrl:  "/assets/media/home/video/video2.mp4",
     title: "Real Estate Showcase",
     description: "Modern property cinematography",
     duration: "3:15",
   },
   {
-    thumbnail: "/assets/media/home/video/video3.mp4",
-    poster: "/assets/media/home/video/poster3.jpg", // Add a poster image if available
-    videoUrl: "https://www.youtube.com/embed/dQw4w9WgXcQ",
+    thumbnail:  "/assets/media/home/video/video2.mp4",
+    poster:  "/assets/media/home/video/video2.mp4", // Add a poster image if available
+    videoUrl:  "/assets/media/home/video/video2.mp4",
     title: "Sports Documentary",
     description: "Behind the scenes with athletes",
     duration: "4:45",
