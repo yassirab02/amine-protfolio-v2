@@ -11,7 +11,7 @@ export default function Footer() {
             <Link to="/" className="block">
               <div className="flex items-center gap-3">
                 <img 
-                  src="/src/assets/my logo white.png"
+                  src="./assets/my logo white.png"
                   alt="Amine Rihani Logo" 
                   className="w-18 h-12 mt-1 object-contain"
                 />
