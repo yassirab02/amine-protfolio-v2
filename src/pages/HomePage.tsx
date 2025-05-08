@@ -198,7 +198,9 @@ export default function HomePage() {
             animate={videosInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.3 }}
           >
-            <h2 className="text-3xl md:text-4xl font-serif text-white tracking-wide">Latest Projects</h2>
+            <h2 className="text-3xl md:text-4xl font-serif text-white tracking-wide">
+              Latest Projects
+            </h2>
             <div className="relative mt-4 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent mx-auto">
               <motion.div
                 className="absolute top-0 left-0 h-full bg-gradient-to-r from-transparent via-white to-transparent"
@@ -241,7 +243,9 @@ export default function HomePage() {
             animate={photosInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.3 }}
           >
-            <h2 className="text-3xl md:text-4xl font-serif text-white tracking-wide">Featured Photography</h2>
+            <h2 className="text-3xl md:text-4xl font-serif text-white tracking-wide">
+              Featured Photography
+            </h2>
             <div className="relative mt-4 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent mx-auto">
               <motion.div
                 className="absolute top-0 left-0 h-full bg-gradient-to-r from-transparent via-white to-transparent"
@@ -350,7 +354,10 @@ export default function HomePage() {
       </section>
 
       {/* Contact CTA */}
-      <section className="relative py-20 px-6 from-zinc-900 to-black overflow-hidden" ref={ctaRef}>
+      <section
+        className="relative py-20 px-6 from-zinc-900 to-black overflow-hidden"
+        ref={ctaRef}
+      >
         {/* Light effect with parallax */}
         <motion.div
           className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-2xl h-48 bg-gradient-to-b from-white to-transparent blur-[100px] rounded-full opacity-30 pointer-events-none"
