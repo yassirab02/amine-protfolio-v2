@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 import { Camera, Instagram, Mail, Linkedin } from "lucide-react";
 
+import footer from "../assets/my logo white.png"
+
+
 export default function Footer() {
   return (
     <footer className="w-full py-12 px-8 bg-black relative transition-colors duration-300">
@@ -11,7 +14,7 @@ export default function Footer() {
             <Link to="/" className="block">
               <div className="flex items-center gap-3">
                 <img 
-                  src="./assets/my logo white.png"
+                  src= {footer}
                   alt="Amine Rihani Logo" 
                   className="w-18 h-12 mt-1 object-contain"
                 />
