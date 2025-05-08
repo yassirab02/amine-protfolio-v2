@@ -140,7 +140,7 @@ const allImages = [
     height: 2399,
   },
   {
-    src: "https://images.pexels.com/photos/2693212/pexels-photo-2693212.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    src: pic5,
     alt: "Light patterns",
     title: "Luminous Forms",
     category: "Abstract",
