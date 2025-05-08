@@ -44,6 +44,14 @@ const featuredVideos = [
     description: "Behind the scenes with athletes",
     duration: "4:45",
   },
+  {
+    thumbnail: "video3",
+    poster: pic5, // Add a poster image if available
+    videoUrl: video1,
+    title: "Sports Documentary",
+    description: "Behind the scenes with athletes",
+    duration: "4:45",
+  },
 ]
 
 // Featured work images

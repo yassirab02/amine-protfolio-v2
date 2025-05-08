@@ -59,7 +59,7 @@ export default function PortfolioPage() {
     <div className="min-h-screen bg-black">
       <PageHeader 
         title="Portfolio" 
-        subtitle="A curated collection of my professional work across photography and filmmaking."
+        subtitle="A curated collection of my professional work across photography and film making."
         backgroundImage="https://images.pexels.com/photos/2931915/pexels-photo-2931915.jpeg?auto=compress&cs=tinysrgb&w=1600"
       />
       
