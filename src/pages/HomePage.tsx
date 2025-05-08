@@ -8,16 +8,15 @@ import VideoGallery from "../components/VideoGallery"
 import { Link } from "react-router-dom"
 import { ArrowRight } from "lucide-react"
 
+import video1 from "../assets/media/home/video/video1.mp4"
+import video2 from "../assets/media/home/video/video2.mp4"
 
-import video1 from '../assets/media/home/video/video1.mp4';
-import video2 from '../assets/media/home/video/video2.mp4';
-
-import pic1 from '../assets/media/home/pic/pic1.jpg';
-import pic2 from '../assets/media/home/pic/pic2.jpg';
-import pic3 from '../assets/media/home/pic/pic3.jpg';
-import pic4 from '../assets/media/home/pic/pic4.jpg';
-import pic5 from '../assets/media/home/pic/pic5.jpg';
-import pic6 from '../assets/media/home/pic/pic6.jpg';
+import pic1 from "../assets/media/home/pic/pic1.jpg"
+import pic2 from "../assets/media/home/pic/pic2.jpg"
+import pic3 from "../assets/media/home/pic/pic3.jpg"
+import pic4 from "../assets/media/home/pic/pic4.jpg"
+import pic5 from "../assets/media/home/pic/pic5.jpg"
+import pic6 from "../assets/media/home/pic/pic6.jpg"
 
 // Featured videos
 const featuredVideos = [
@@ -38,9 +37,9 @@ const featuredVideos = [
     duration: "3:15",
   },
   {
-    thumbnail:  "video3",
-    poster:  pic3, // Add a poster image if available
-    videoUrl:  video1,
+    thumbnail: "video3",
+    poster: pic3, // Add a poster image if available
+    videoUrl: video1,
     title: "Sports Documentary",
     description: "Behind the scenes with athletes",
     duration: "4:45",
@@ -157,10 +156,10 @@ export default function HomePage() {
   const ctaRef = useRef(null)
 
   // Check if sections are in view
-  const videosInView = useInView(videosRef, { once: false, amount: 0.1 })
-  const photosInView = useInView(photosRef, { once: false, amount: 0.1 })
-  const servicesInView = useInView(servicesRef, { once: false, amount: 0.1 })
-  const ctaInView = useInView(ctaRef, { once: false, amount: 0.2 })
+  const videosInView = useInView(videosRef, { once: true, amount: 0.1 })
+  const photosInView = useInView(photosRef, { once: true, amount: 0.1 })
+  const servicesInView = useInView(servicesRef, { once: true, amount: 0.1 })
+  const ctaInView = useInView(ctaRef, { once: true, amount: 0.2 })
 
   // Parallax effect for CTA section
   const { scrollYProgress } = useScroll()
@@ -198,9 +197,7 @@ export default function HomePage() {
             animate={videosInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.3 }}
           >
-            <h2 className="text-3xl md:text-4xl font-serif text-white tracking-wide">
-              Latest Projects
-            </h2>
+            <h2 className="text-3xl md:text-4xl font-serif text-white tracking-wide">Latest Projects</h2>
             <div className="relative mt-4 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent mx-auto">
               <motion.div
                 className="absolute top-0 left-0 h-full bg-gradient-to-r from-transparent via-white to-transparent"
@@ -243,9 +240,7 @@ export default function HomePage() {
             animate={photosInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
             transition={{ duration: 0.3 }}
           >
-            <h2 className="text-3xl md:text-4xl font-serif text-white tracking-wide">
-              Featured Photography
-            </h2>
+            <h2 className="text-3xl md:text-4xl font-serif text-white tracking-wide">Featured Photography</h2>
             <div className="relative mt-4 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent mx-auto">
               <motion.div
                 className="absolute top-0 left-0 h-full bg-gradient-to-r from-transparent via-white to-transparent"
@@ -354,10 +349,7 @@ export default function HomePage() {
       </section>
 
       {/* Contact CTA */}
-      <section
-        className="relative py-20 px-6 from-zinc-900 to-black overflow-hidden"
-        ref={ctaRef}
-      >
+      <section className="relative py-20 px-6 from-zinc-900 to-black overflow-hidden" ref={ctaRef}>
         {/* Light effect with parallax */}
         <motion.div
           className="absolute top-0 left-1/2 -translate-x-1/2 w-full max-w-2xl h-48 bg-gradient-to-b from-white to-transparent blur-[100px] rounded-full opacity-30 pointer-events-none"
