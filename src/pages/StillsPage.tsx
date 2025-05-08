@@ -3,6 +3,16 @@ import PageHeader from '../components/PageHeader';
 import ImageGallery from '../components/ImageGallery';
 import { useState } from 'react';
 
+import pic1 from "../assets/media/photography/restaurant/c1.jpg"
+import pic2 from "../assets/media/photography/driving/d1.jpg"
+import pic3 from "../assets/media/photography/rooms/r1.jpg"
+import pic4 from "../assets/media/photography/weddings/w1.jpg"
+import pic5 from "../assets/media/photography/restaurant/c4.jpg"
+import pic6 from "../assets/media/photography/weddings/w4.jpg"
+import pic7 from "../assets/media/photography/rooms/r3.jpg"
+import pic8 from "../assets/media/photography/driving/d4.jpg"
+import pic9 from "../assets/media/photography/weddings/w3.jpg"
+
 // Categories for filtering
 const categories = [
   "All",
@@ -10,15 +20,15 @@ const categories = [
   "Landscape",
   "Architecture",
   "Street",
-  "Abstract",
-  "Wildlife"
+  "Restaurants",
+  "Weddings"
 ];
 
 // Photo gallery images
 const allImages = [
   // Portraits
   {
-    src: "https://images.pexels.com/photos/1689731/pexels-photo-1689731.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    src: pic1,
     alt: "Portrait of woman",
     title: "Elegant Gaze",
     category: "Portrait",
@@ -26,7 +36,7 @@ const allImages = [
     height: 2400,
   },
   {
-    src: "https://images.pexels.com/photos/1898555/pexels-photo-1898555.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    src: pic2,
     alt: "Portrait of man",
     title: "Urban Portrait",
     category: "Portrait",
@@ -34,7 +44,7 @@ const allImages = [
     height: 2133,
   },
   {
-    src: "https://images.pexels.com/photos/1770310/pexels-photo-1770310.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    src: pic3,
     alt: "Studio portrait",
     title: "Ambient Light",
     category: "Portrait",
@@ -44,7 +54,7 @@ const allImages = [
   
   // Landscapes
   {
-    src: "https://images.pexels.com/photos/2335126/pexels-photo-2335126.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    src: pic4,
     alt: "Mountain landscape",
     title: "Mountain Majesty",
     category: "Landscape",
@@ -52,7 +62,7 @@ const allImages = [
     height: 1068,
   },
   {
-    src: "https://images.pexels.com/photos/2662116/pexels-photo-2662116.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    src: pic5,
     alt: "Ocean sunset",
     title: "Oceanic Twilight",
     category: "Landscape",
@@ -60,7 +70,7 @@ const allImages = [
     height: 1067,
   },
   {
-    src: "https://images.pexels.com/photos/1287145/pexels-photo-1287145.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    src: pic5,
     alt: "Forest scene",
     title: "Verdant Path",
     category: "Landscape",
@@ -70,7 +80,7 @@ const allImages = [
   
   // Architecture
   {
-    src: "https://images.pexels.com/photos/1769392/pexels-photo-1769392.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    src: pic6,
     alt: "Modern building",
     title: "Steel & Glass",
     category: "Architecture",
@@ -78,7 +88,7 @@ const allImages = [
     height: 2400,
   },
   {
-    src: "https://images.pexels.com/photos/2404949/pexels-photo-2404949.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    src: pic7,
     alt: "Historic architecture",
     title: "Classical Forms",
     category: "Architecture",
@@ -86,7 +96,7 @@ const allImages = [
     height: 1066,
   },
   {
-    src: "https://images.pexels.com/photos/1722184/pexels-photo-1722184.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    src: pic8,
     alt: "Interior design",
     title: "Spatial Harmony",
     category: "Architecture",
@@ -96,7 +106,7 @@ const allImages = [
   
   // Street
   {
-    src: "https://images.pexels.com/photos/1755243/pexels-photo-1755243.jpeg?auto=compress&cs=tinysrgb&w=1600",
+    src: pic9,
     alt: "Urban street scene",
     title: "City Rhythm",
     category: "Street",
