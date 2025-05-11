@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion';
 import PageHeader from '../components/PageHeader';
 import { Camera, Award, Film, Compass } from 'lucide-react';
+import about from "../assets/me2.png";
+
 
 export default function AboutPage() {
   return (
@@ -21,7 +23,7 @@ export default function AboutPage() {
               transition={{ duration: 0.6 }}
             >
               <img 
-                src="../assets/me2.png"
+                src={about}
                 alt="Amine Rihani - Photographer and Filmmaker"
                 className="w-full h-auto rounded-2xl shadow-lg object-cover aspect-[3/4]"
               />
