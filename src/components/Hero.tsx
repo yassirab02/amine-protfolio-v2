@@ -2,6 +2,7 @@ import { useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
 import hero from '../assets/me.png';
+import { Link } from 'react-router-dom';
 
 
 const Hero = () => {
@@ -101,12 +102,12 @@ const Hero = () => {
           transition={{ duration: 0.7, delay: 1 }}
           className="mt-10 md:mt-16"
         >
-          <a 
-            href="/portfolio"
+          <Link 
+            to="/portfolio"
             className="inline-block border border-white/40 hover:border-white px-8 py-3 text-sm tracking-widest font-serif transition-all hover:bg-white/10 backdrop-blur-sm"
           >
             VIEW PORTFOLIO
-          </a>
+          </Link>
         </motion.div>
       </motion.div>
     </div>
