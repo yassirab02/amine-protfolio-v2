@@ -102,7 +102,7 @@ const Hero = () => {
           className="mt-10 md:mt-16"
         >
           <a 
-            href="portfolio"
+            href="/portfolio"
             className="inline-block border border-white/40 hover:border-white px-8 py-3 text-sm tracking-widest font-serif transition-all hover:bg-white/10 backdrop-blur-sm"
           >
             VIEW PORTFOLIO
