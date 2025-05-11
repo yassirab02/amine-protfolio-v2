@@ -21,7 +21,7 @@ export default function AboutPage() {
               transition={{ duration: 0.6 }}
             >
               <img 
-                src="https://images.pexels.com/photos/1587927/pexels-photo-1587927.jpeg?auto=compress&cs=tinysrgb&w=1600"
+                src="/src/assets/me2.png"
                 alt="Amine Rihani - Photographer and Filmmaker"
                 className="w-full h-auto rounded-2xl shadow-lg object-cover aspect-[3/4]"
               />
@@ -36,7 +36,7 @@ export default function AboutPage() {
               
               <div className="space-y-6 text-white/80">
                 <p>
-                  I'm Amine Rihani, a professional photographer and filmmaker with over 12 years of experience in visual storytelling. My journey began with a simple point-and-shoot camera but quickly evolved into a deep passion for capturing moments that tell compelling stories.
+                  I'm Amine Rihani, a professional photographer and filmmaker with over 5 years of experience in visual storytelling. My journey began with a simple point-and-shoot camera but quickly evolved into a deep passion for capturing moments that tell compelling stories.
                 </p>
                 
                 <p>
@@ -127,7 +127,7 @@ export default function AboutPage() {
       </section>
       
       {/* Achievements */}
-      <section id="achievements" className="py-20 px-6">
+       {/* <section id="achievements" className="py-20 px-6">
         <div className="container mx-auto">
           <motion.div 
             className="text-center mb-16"
@@ -189,10 +189,10 @@ export default function AboutPage() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
       
       {/* Clients & Publications */}
-      <section className="py-20 px-6 bg-gradient-to-b from-zinc-950 to-black">
+      {/*<section className="py-20 px-6 bg-gradient-to-b from-zinc-950 to-black">
         <div className="container mx-auto">
           <motion.div 
             className="text-center mb-16"
@@ -218,7 +218,7 @@ export default function AboutPage() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 }
