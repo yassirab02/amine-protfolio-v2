@@ -3,6 +3,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 
 import hero from "../assets/me.png";
 import { Link } from "react-router-dom";
+import { ArrowRight } from "lucide-react";
 
 const Hero = () => {
   const heroRef = useRef<HTMLDivElement>(null);
@@ -101,9 +102,7 @@ const Hero = () => {
           >
             <span className="flex items-center">
               VIEW PORTFOLIO
-              <span className="inline-block ml-1 transform scale-0 opacity-0 group-hover:opacity-100 group-hover:scale-100 group-hover:ml-2 transition-all duration-300 text-base">
-                →
-              </span>
+              <ArrowRight className="inline-block ml-1 transform scale-0 opacity-0 group-hover:opacity-100 group-hover:scale-100 group-hover:ml-2 transition-all duration-300 w-4 h-4" />
             </span>
           </Link>
         </motion.div>
