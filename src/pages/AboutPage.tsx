@@ -21,7 +21,7 @@ export default function AboutPage() {
               transition={{ duration: 0.6 }}
             >
               <img 
-                src="/src/assets/me2.png"
+                src="../assets/me2.png"
                 alt="Amine Rihani - Photographer and Filmmaker"
                 className="w-full h-auto rounded-2xl shadow-lg object-cover aspect-[3/4]"
               />
